@@ -1,0 +1,252 @@
+html{
+    font-size: 50px;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #FD9054 0%, #F16622 100%);
+    overflow: auto;
+}
+.main{
+    max-width: 7.5rem;
+    margin: 0 auto;
+    background-image: url('../images/main_bg.png');
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    overflow: hidden;
+}
+.card {
+    position: relative;
+    margin: 0 auto;
+    width: 6.86rem;
+    min-height: 2rem;
+    background-color: #fdf6e9;
+    border-radius: .12rem;
+    box-shadow: 0px 0.2rem 0.2rem 0px rgba(243, 112, 39, 0.8);
+    padding: 1.4rem 0.32rem 0.6rem;
+}
+.card .top{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -2.43rem;
+    width: 4.86rem;
+    height: 0.78rem;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.card .top.personal-info-title{
+    background-image: url('../images/personal_info_title.png');
+}
+.card .top.work-title{
+    background-image: url('../images/work_title.png');
+}
+.card .circle{
+    position: absolute;
+    top: 0.6rem;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 0.6rem;
+}
+.card .circle.left-circle{
+    left: -0.2rem;
+    background: linear-gradient(90deg, #fc8e51 0%, #f88240 100%);
+}
+.card .circle.right-circle{
+    right: -0.2rem;
+    background: linear-gradient(90deg, #f16924 0%, #f26722 100%);
+}
+.card.personal-info{
+    margin-top: 4.22rem;
+}
+.card.work-info{
+    margin-top: .4rem;
+}
+
+.join-btn{
+    width: 6.06rem;
+    height: 1.14rem;
+    margin: 0.6rem auto 1rem;
+    background-image: url('../images/join_btn.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+/* 输入框 */
+.form-item{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.48rem;
+}
+.form-item:last-child{
+    margin-bottom: 0;
+}
+.form-item label{
+    display: block;
+    color: #F65541;
+    font-size: 0.36rem;
+    margin-bottom: 0.32rem;
+}
+.form-item label span{
+    color: #FF8F1F;
+    font-size: 0.24rem;
+}
+.form-item .input{
+    width: 100%;
+    height: 0.88rem;
+    line-height: 0.88rem;
+    padding: 0 0.32rem;
+    background-color: #fff;
+    border-radius: 4px;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    font-size: 0.28rem;
+}
+.form-item textarea.input{
+    height: 4rem;
+    line-height: 1em;
+    padding-top: 0.32rem;
+    padding-bottom: 0.32rem;
+}
+
+/* tab */
+.tab{
+    display: flex;
+    justify-content: space-between;
+}
+.tab .tab-item{
+    width: 1.8rem;
+    height: 0.72rem;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 0.28rem;
+    line-height: 0.72rem;
+    border-radius: 0.72rem;
+    background: linear-gradient(180deg, #E2E2E2 -5%, #BBBBBB 99%);
+}
+.tab .tab-item.actived{
+    background: linear-gradient(180deg, #F4DB15 -5%, #FF7903 99%);
+}
+
+/* 上传样式 */
+.upload{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 6px;
+    background: #FFFFFF;
+    border: 0.5px solid #E8E8E9;
+    position: relative;
+}
+.upload .file{
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.upload .icon{
+    width: 0.67rem;
+    height: 0.67rem;
+    background-image: url('../images/add.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin: 0.2rem auto 0.26rem;
+}
+.upload .text{
+    font-size: 0.24rem;
+    color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 0.1rem;
+    padding: 0 0.2rem;
+}
+.upload .tip{
+    font-size: 0.2rem;
+    color: rgba(0, 0, 0, 0.3);
+    padding: 0 0.2rem;
+}
+.img-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+.img-item{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 6px;
+    background: #FFFFFF;
+    border: 0.5px solid #E8E8E9;
+    flex-shrink: 1;
+    margin: 0 0.1rem 0.32rem 0;
+    overflow: hidden;
+    position: relative;
+}
+.img-item:nth-child(3), .img-item:nth-child(6){
+    margin-right: 0;
+}
+.img-item img{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.img-item .delete{
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100px;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.3);
+}
+.img-item .delete .icon{
+    width: 0.32rem;
+    height: 0.32rem;
+    background-image: url('../images/delete_btn.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: block;
+    margin: 0.02rem auto;
+}
+
+/* 视频区域 */
+.no-video{
+    width: 100%;
+    height: 3.5rem;
+    border-radius: 6px;
+    background: #FFFFFF;
+    border: 0.5px solid #E8E8E9;
+    padding: 0.38rem 0.28rem;
+    color: #9E9E9E;
+    font-size: 0.24rem;
+    position: relative;
+}
+.no-video .bg{
+    display: block;
+    width: 1.08rem;
+    height: 1.08rem;
+    background-image: url('../images/video.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin: 0.3rem auto 0.2rem
+}
+.no-video .text{
+    line-height: 2.2em;
+}
+.no-video .file{
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.video{
+    width: 100%;
+    height: 3.5rem;
+    display: block;
+}
