@@ -1,0 +1,11 @@
+body{
+  background: linear-gradient(90deg, #FD9054 0%, #F16622 100%);
+}
+.container{
+  width: 375px;
+  height: 2776px;
+  border: 1px solid black;
+  background-image: url('../images/main_bg.png');
+  background-size: 375px 210.94px;
+  background-repeat: no-repeat;
+}
