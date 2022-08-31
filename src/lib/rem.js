@@ -6,9 +6,9 @@
 
     let width = docEl.getBoundingClientRect().width;
     if (width > 750) { // 最大宽度,  750为设计稿的宽度
-      docEl.style.fontSize = '100px';
+      docEl.style.fontSize = '50px';
     } else {
-      var rem = width / 3.75;
+      var rem = width / 7.5;
       docEl.style.fontSize = rem + 'px';
     }
   }

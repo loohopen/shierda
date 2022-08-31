@@ -4,13 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>上传作品</title>
     <style>
         [v-cloak] {
             display: none;
         }
     </style>
+    <script src="../lib/rem.js"></script>
+    <link rel="stylesheet" href="../css/component.css">
     <link rel="stylesheet" href="../css/upload.css">
 </head>
 
@@ -115,6 +117,14 @@
                             :maxlength="200"></textarea>
                     </div>
                 </div>
+
+                <div class="form-item">
+                    <label class="label" for="imgCode">验证码</label>
+                    <div class="img-code-input">
+                        <input class="input has-img-code" v-model="imgCode" type="text" name="imgCode">
+                        <img class="img-code" :src="imgCodeUrl" />
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -124,6 +134,8 @@
 
 <script src="../lib/vue.min.js"></script>
 <script src="../lib//qiniu.min.js"></script>
+<script src="../js/http.js"></script>
+<script src="../js/component.js"></script>
 <script src="../js/upload.js"></script>
 
 </html>

@@ -1,15 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
   <link rel="stylesheet" href="../css/rule.css">
-  <title>Document</title>
+  <script src="../lib/rem.js"></script>
+  <title>活动详情</title>
 </head>
+
 <body>
   <div class="container">
+    <div class="card activity-bac">
+      <div class="top">
+        <div class="top-color"></div>
+        <div class="top-title bac"></div>
+      </div>
+      <div class="circle left-circle"></div>
+      <div class="circle right-circle"></div>
+      <div class="work work-bac">
+        <p>
+          为深入贯彻落实习近平总书记关于乡村振兴及青年工作的重要思想，落实“听党话、感恩党、跟党走”宣传教育活动及“喜迎二十大、永远跟党走、奋进新征程”主题教育实践活动，深化乡村振兴青春建功行动，团结引领广大青年在全面推进乡村振兴、加快推进农业农村现代化进程中建功立业，以实际行动迎接党的二十大胜利召开。市农业农村委、团市委联合开展“喜迎二十大 青春建新功”上海青年助力乡村振兴主题征文及摄影、短视频作品征集展示活动。
+        </p>
+      </div>
+    </div>
 
+    <div class="card active-content">
+      <div class="top">
+        <div class="top-color"></div>
+        <div class="top-title content"></div>
+      </div>
+      <div class="circle left-circle"></div>
+      <div class="circle right-circle"></div>
+      <div class="work work-content">
+        <p>
+          以“喜迎二十大 青春建新功”为主题，面向全市青年发起三大征集活动——“喜迎二十大 青春建新功”主题征文、“青春聚力 ‘照’亮乡村”摄影作品征集、“逐梦振兴路 青春向未来”短视频作品征集。征集环节结束后，将遴选优秀作品和“最受欢迎奖”摄影作品进行集中展示。
+        </p>
+        <p>一. 征集对象：面向全社会征集，集体、个人均可参与</p>
+        <p>二. 征集时间：2022年9月5日至2022年9月23日</p>
+        <p>三. 征集内容：文章、图片、视频</p>
+        <p>四. 展示时间：2022年10月8日至10月下旬</p>
+        <p>五. 展示平台：《东方城乡报》，东方城乡报学习强国号，上农APP，上海三农微信、抖音号、微信视频号，农好青春等</p>
+      </div>
+    </div>
+
+    <div class="card collect-content">
+      <div class="top">
+        <div class="top-color"></div>
+        <div class="top-title collect"></div>
+      </div>
+      <div class="circle left-circle"></div>
+      <div class="circle right-circle"></div>
+      <div class="work work-collect">
+        <p class="text-color">（一）“喜迎二十大 青春建新功”主题征文</p>
+        <p>征文内容应展现青年在乡村振兴事业中矢志不渝、逐梦前行的场景，体现青年积极学习成长，勇挑时代担当，抒发青年爱党爱国爱社会主义情怀，以及对乡村振兴事业的真挚热爱和奋斗热情。</p>
+        <p class="text-color addtop">（二）“青春聚力 ‘照’亮乡村”摄影作品征集</p>
+        <p>摄影作品应展现上海乡村建设过程中的新成果、新变化、新亮点，能反映乡村振兴成果，分享上海的乡村美景、美食，发掘乡贤文化，展示对上海的热爱之情。</p>
+        <p class="text-color addtop">（三）“逐梦振兴路 青春向未来”短视频作品征集</p>
+        <p>短视频作品内容围绕上海“三园工程”（“美丽家园”“绿色田园”“幸福乐园”）建设成果；展示青年在乡村产业带动、乡村公共服务、农业科技推广、乡村综合治理等领域的积极作为和实践风采；体现青年勇于担当、甘于奉献的精神。</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p class="organizer">主办单位</p>
+      <p class="information">上海市农业农村委员会、共青团上海市委员会</p>
+
+      <p class="organizer organizer-top">承办单位</p>
+      <p class="information">东方城乡报社</p>
+    </div>
+
+    <div class="footer-btn"></div>
   </div>
 </body>
+<script>
+  window.onload=function(){
+  var footerBtn=document.getElementsByClassName("footer-btn")[0];
+  
+  //点击弹框的确认按钮关闭弹窗
+  footerBtn.onclick=function(){
+    location.href = '../pages/upload.html'
+  }
+}
+</script>
 </html>

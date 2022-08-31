@@ -1,4 +1,5 @@
 window.onload = function () {
+    var telReg = /^1(3\d|4[5-9]|5[0-35-9]|6[567]|7[0-8]|8\d|9[0-35-9])\d{8}$/
     var App = new Vue({
         el: '#app',
         data() {
@@ -25,10 +26,11 @@ window.onload = function () {
                 workType: 1, // 1 征文 2 照片 3 短视频
 
                 imgCode: '',
+                imgCodeUrl: ''
             }
         },
         created() {
-            console.log(111)
+            this.getImgCodeUrl()
         },
         methods: {
             handleClick(tabIndex) {
@@ -75,7 +77,86 @@ window.onload = function () {
             },
 
             handleJoin() {
+                // 校验数据
+                var vaildInfo = this.validate()
+                if (!vaildInfo.valid) {
+                    window.$util.toast({title: vaildInfo.msg})
+                    return
+                } 
+            },
 
+            validate() {
+                var v = { valid: true, msg: ''}
+                if (!this.workInfos.name) {
+                    v.valid = false
+                    v.msg = '请输入姓名'
+                    return v
+                }
+                if (!telReg.test(this.workInfos.tel)) {
+                    v.valid = false
+                    v.msg = '请输入正确的手机号'
+                    return v
+                }
+                if (!this.workInfos.company) {
+                    v.valid = false
+                    v.msg = '请输入所属单位'
+                    return v
+                }
+                if (this.workType === 1) {
+                    if (!this.workInfos.workName) {
+                        v.valid = false
+                        v.msg = '请输入作品名称'
+                        return v
+                    }
+                    var _t = this.workInfos.workContent.replace(/\s+/g, '')
+                    if (!_t || this.workInfos.workContent.length > 2000) {
+                        v.valid = false
+                        v.msg = '作品内容必填且不超过2000字'
+                        return v
+                    }
+                    if (!this.workInfos.workPhotos.length) {
+                        v.valid = false
+                        v.msg = '请至少上传一张配图'
+                        return v
+                    }
+                } else if (this.workType === 2) {
+                    if (!this.workInfos.workPhotos.length) {
+                        v.valid = false
+                        v.msg = '请至少上传一张配图'
+                        return v
+                    }
+
+                    var _t = this.workInfos.workDesc.replace(/\s+/g, '')
+                    if (!_t || this.workInfos.workDesc.length > 200) {
+                        v.valid = false
+                        v.msg = '作品介绍必填且不超过200字'
+                        return v
+                    }
+                }else {
+                    if (!this.workInfos.workVideo) {
+                        v.valid = false
+                        v.msg = '请上传短视频作品'
+                        return v
+                    }
+                    var _t = this.workInfos.workDesc.replace(/\s+/g, '')
+                    if (!_t || this.workInfos.workDesc.length > 200) {
+                        v.valid = false
+                        v.msg = '作品介绍必填且不超过200字'
+                        return v
+                    }
+                }
+                if (!this.imgCode) {
+                    v.valid = false
+                    v.msg = '请输入图形验证码'
+                    return v
+                }
+                return v
+            },
+
+            getImgCodeUrl() {
+               window.$http.get('/d', '', function() {
+                   console.log(11)
+               })
             }
         }
     })
