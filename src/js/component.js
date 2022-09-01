@@ -2,7 +2,7 @@
   window.$util = {}
   var Toast = function(options) {
     options = options || {}
-    var title = options.title || Toast组件
+    var title = options.title || 'Toast组件'
     var duration = options.duration || 2000
     var div = document.createElement('div')
     div.classList.add('toast')

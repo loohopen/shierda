@@ -10,10 +10,10 @@ window.onload=function(){
   //点击弹框的确认按钮关闭弹窗
   footerBtn.onclick=function(){
     upload.style.display='none';
-    location.href = '../pages/upload.html'
+    location.href = '/upload.html'
   }
 
   ruleBtn.onclick=function(){
-    location.href = '../pages/rule.html'
+    location.href = '/rule.html'
   }
 }

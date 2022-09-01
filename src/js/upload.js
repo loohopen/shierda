@@ -2,11 +2,12 @@ window.onload = function () {
     var telReg = /^1(3\d|4[5-9]|5[0-35-9]|6[567]|7[0-8]|8\d|9[0-35-9])\d{8}$/
     var App = new Vue({
         el: '#app',
-        data() {
+        data () {
             return {
                 workInfos: {
                     name: '',
                     tel: '',
+                    address: '',
                     company: '',
 
                     // 征文活动的
@@ -18,30 +19,35 @@ window.onload = function () {
                     workDesc: '',
 
                     // 短视频
-                    workVideo: 'http://tv.xingafrica.com/XingAfrica.mp4',
+                    workVideo: '',
 
                 },
 
-                maxPhotoCount: 6,
+                maxPhotoCount: 3,
                 workType: 1, // 1 征文 2 照片 3 短视频
 
                 imgCode: '',
                 imgCodeUrl: ''
             }
         },
-        created() {
+        created () {
             this.getImgCodeUrl()
         },
         methods: {
-            handleClick(tabIndex) {
+            handleClick (tabIndex) {
                 this.workType = tabIndex
+                if (tabIndex == 1) {
+                    this.maxPhotoCount = 3
+                } else {
+                    this.maxPhotoCount = 5
+                }
             },
 
-            handleDelete(index) {
+            handleDelete (index) {
                 this.workInfos.workPhotos.splice(index, 1)
             },
 
-            handleUpload(el, type) {
+            handleUpload (el, type) {
                 var file = el.target.files[0]
                 console.log(file)
                 // vFNS3H858is0QqD9H0nGk8s6697Co_60I1gAibun:_DbOrGjvXq5sXUVrW69i5wLdCbs=:eyJzY29wZSI6InhpbmdhZnJpY2EiLCJkZWFkbGluZSI6MTY2MTc4ODIwNX0=
@@ -76,17 +82,42 @@ window.onload = function () {
                 });
             },
 
-            handleJoin() {
+            handleJoin () {
                 // 校验数据
                 var vaildInfo = this.validate()
-                if (!vaildInfo.valid) {
-                    window.$util.toast({title: vaildInfo.msg})
-                    return
-                } 
+                // if (!vaildInfo.valid) {
+                //     window.$util.toast({ title: vaildInfo.msg })
+                //     return
+                // }
+                $.post('http://39.98.40.64:9902/site/submit-content', {
+                    name: this.workInfos.name,
+                    phone: this.workInfos.tel,
+                    address: this.workInfos.address,
+                    work_place: this.workInfos.company,
+                    type: this.workType,
+                    works_name: this.workInfos.workName,
+                    works_content: this.workInfos.workContent,
+                    works_imgs: this.workInfos.workPhotos,
+                    works_video: this.workInfos.workVideo,
+                    works_description: this.workInfos.workDesc,
+                    verifyCode: this.imgCode,
+                }, function (res) {
+                    try {
+                        const _res = JSON.parse(res)
+                        if (_res.code == 200) {
+
+                        } else {
+                            window.$util.toast({ title: _res.message })
+                        }
+                    } catch (e) {
+                        console.error(e)
+                    }
+
+                });
             },
 
-            validate() {
-                var v = { valid: true, msg: ''}
+            validate () {
+                var v = { valid: true, msg: '' }
                 if (!this.workInfos.name) {
                     v.valid = false
                     v.msg = '请输入姓名'
@@ -95,6 +126,11 @@ window.onload = function () {
                 if (!telReg.test(this.workInfos.tel)) {
                     v.valid = false
                     v.msg = '请输入正确的手机号'
+                    return v
+                }
+                if (!this.workInfos.address) {
+                    v.valid = false
+                    v.msg = '请输入联系地址'
                     return v
                 }
                 if (!this.workInfos.company) {
@@ -132,7 +168,7 @@ window.onload = function () {
                         v.msg = '作品介绍必填且不超过200字'
                         return v
                     }
-                }else {
+                } else {
                     if (!this.workInfos.workVideo) {
                         v.valid = false
                         v.msg = '请上传短视频作品'
@@ -153,10 +189,15 @@ window.onload = function () {
                 return v
             },
 
-            getImgCodeUrl() {
-               window.$http.get('/d', '', function() {
-                   console.log(11)
-               })
+            handleImgCodeChange () {
+                this.getImgCodeUrl()
+            },
+
+            getImgCodeUrl () {
+                var _self = this
+                $.get('http://39.98.40.64:9902/site/captcha?refresh=true', function (res) {
+                    _self.imgCodeUrl = `http://39.98.40.64:9902${res.url}`
+                });
             }
         }
     })

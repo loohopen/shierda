@@ -12,8 +12,8 @@
         }
     </style>
     <script src="../lib/rem.js"></script>
-    <link rel="stylesheet" href="../css/component.css">
-    <link rel="stylesheet" href="../css/upload.css">
+    <link rel="stylesheet" href="/css/component.css">
+    <link rel="stylesheet" href="/css/upload.css">
 </head>
 
 <body>
@@ -25,15 +25,19 @@
             <div class="content">
                 <div class="form-item">
                     <label class="label" for="name">姓名</label>
-                    <input class="input" v-model="workInfos.name" type="text" name="name" :maxlength="10">
+                    <input class="input" v-model="workInfos.name" placeholder="请输入姓名" type="text" name="name" :maxlength="10">
                 </div>
                 <div class="form-item">
                     <label class="label" for="tel">联系方式</label>
-                    <input class="input" v-model="workInfos.tel" type="text" name="tel">
+                    <input class="input" v-model="workInfos.tel" placeholder="请输入联系方式" type="text" name="tel">
+                </div>
+                <div class="form-item">
+                    <label class="label" for="tel">联系地址</label>
+                    <input class="input" v-model="workInfos.address" placeholder="请输入联系地址" type="text" name="tel">
                 </div>
                 <div class="form-item">
                     <label class="label" for="company">所属单位</label>
-                    <input class="input" v-model="workInfos.company" type="text" name="company" :maxlength="50">
+                    <input class="input" v-model="workInfos.company" placeholder="请输入所属单位" type="text" name="company" :maxlength="50">
                 </div>
             </div>
         </div>
@@ -55,22 +59,22 @@
                 <!-- 征文活动 -->
                 <div v-show="workType === 1" class="work-input text-work">
                     <div class="form-item">
-                        <label class="label" for="workName">作品名称</label>
-                        <input class="input" v-model="workInfos.workName" type="text" name="workName" :maxlength="30">
+                        <label class="label" for="workName">文章标题</label>
+                        <input class="input" v-model="workInfos.workName" placeholder="请输入文章标题" type="text" name="workName" :maxlength="30">
                     </div>
                     <div class="form-item">
-                        <label class="label" for="workContent">作品内容<span>（字数&lt;2000字）</span></label>
-                        <textarea class="input" v-model="workInfos.workContent" type="textarea" rows="8"
+                        <label class="label" for="workContent">文章内容<span>（字数&lt;2000字）</span></label>
+                        <textarea class="input" v-model="workInfos.workContent" placeholder="请输入文章内容" type="textarea" rows="8"
                             name="workContent" :maxlength="2000"></textarea>
                     </div>
                     <div class="form-item">
-                        <label class="label" for="workPhotos">作品配图</label>
+                        <label class="label" for="workPhotos">文章配图</label>
                         <div class="img-list">
                             <div class="img-item" v-for="(item, index) in workInfos.workPhotos" :key="index">
                                 <img :src="item">
                                 <div class="delete" @click="handleDelete(index)"><span class="icon"></span></div>
                             </div>
-                            <div v-if="workInfos.workPhotos.length < 6" class="img-item upload">
+                            <div v-if="workInfos.workPhotos.length < maxPhotoCount" class="img-item upload">
                                 <input class="file" type="file" @change="handleUpload($event)">
                                 <div class="icon"></div>
                                 <div class="text">上传图片[{{workInfos.workPhotos.length}}/{{maxPhotoCount}}]</div>
@@ -81,13 +85,17 @@
                 </div>
                 <div v-show="workType === 2" class="work-input photo-work">
                     <div class="form-item">
-                        <label class="label" for="workPhotos">照片作品</label>
+                        <label class="label" for="workName">作品名称</label>
+                        <input class="input" v-model="workInfos.workName" placeholder="请输入作品名称" type="text" name="workName" :maxlength="30">
+                    </div>
+                    <div class="form-item">
+                        <label class="label" for="workPhotos">作品上传</label>
                         <div class="img-list">
                             <div class="img-item" v-for="(item, index) in workInfos.workPhotos" :key="index">
                                 <img :src="item">
                                 <div class="delete" @click="handleDelete(index)"><span class="icon"></span></div>
                             </div>
-                            <div v-if="workInfos.workPhotos.length < 6" class="img-item upload">
+                            <div v-if="workInfos.workPhotos.length < maxPhotoCount" class="img-item upload">
                                 <input class="file" type="file" @change="handleUpload($event)">
                                 <div class="icon"></div>
                                 <div class="text">上传图片[{{workInfos.workPhotos.length}}/{{maxPhotoCount}}]</div>
@@ -97,13 +105,17 @@
                     </div>
                     <div class="form-item">
                         <label class="label" for="workDesc">作品介绍<span>（字数&lt;200字）</span></label>
-                        <textarea class="input" v-model="workInfos.workDesc" type="textarea" rows="8" name="workDesc"
+                        <textarea class="input" v-model="workInfos.workDesc" placeholder="请输入作品介绍" type="textarea" rows="8" name="workDesc"
                             :maxlength="200"></textarea>
                     </div>
                 </div>
                 <div v-show="workType === 3" class="work-input video-work">
                     <div class="form-item">
-                        <label class="label" for="workVideo">短视频作品</label>
+                        <label class="label" for="workName">作品名称</label>
+                        <input class="input" v-model="workInfos.workName" placeholder="请输入作品名称" type="text" name="workName" :maxlength="30">
+                    </div>
+                    <div class="form-item">
+                        <label class="label" for="workVideo">作品上传</label>
                         <div v-if="!workInfos.workVideo" class="no-video">
                             <span class="bg"></span>
                             <span class="text">投稿作品需为MP4、MOV格式，时长&lt;3分钟，分辨率 不低于720P（即1280*720），大小不超过200M</span>
@@ -113,7 +125,7 @@
                     </div>
                     <div class="form-item">
                         <label class="label" for="workDesc">作品介绍<span>（字数&lt;200字）</span></label>
-                        <textarea class="input" v-model="workInfos.workDesc" type="textarea" rows="8" name="workDesc"
+                        <textarea class="input" v-model="workInfos.workDesc" placeholder="请输入作品介绍" type="textarea" rows="8" name="workDesc"
                             :maxlength="200"></textarea>
                     </div>
                 </div>
@@ -121,8 +133,8 @@
                 <div class="form-item">
                     <label class="label" for="imgCode">验证码</label>
                     <div class="img-code-input">
-                        <input class="input has-img-code" v-model="imgCode" type="text" name="imgCode">
-                        <img class="img-code" :src="imgCodeUrl" />
+                        <input class="input has-img-code" v-model="imgCode" placeholder="请输入验证码" type="text" name="imgCode">
+                        <img class="img-code" :src="imgCodeUrl" @click="handleImgCodeChange" />
                     </div>
                 </div>
             </div>
@@ -132,10 +144,10 @@
     </div>
 </body>
 
-<script src="../lib/vue.min.js"></script>
-<script src="../lib//qiniu.min.js"></script>
-<script src="../js/http.js"></script>
-<script src="../js/component.js"></script>
-<script src="../js/upload.js"></script>
+<script src="/lib/vue.min.js"></script>
+<script src="/lib/qiniu.min.js"></script>
+<script src="/lib/jquery.js"></script>
+<script src="/js/component.js"></script>
+<script src="/js/upload.js"></script>
 
 </html>
