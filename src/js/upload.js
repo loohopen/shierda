@@ -27,11 +27,13 @@ window.onload = function () {
                 workType: 1, // 1 征文 2 照片 3 短视频
 
                 imgCode: '',
-                imgCodeUrl: ''
+                imgCodeUrl: 'http://39.98.40.64:9902/site/captcha?_' + Date.now(),
+                qiniuToken: ''
             }
         },
         created () {
             this.getImgCodeUrl()
+            this.getQiniuToken()
         },
         methods: {
             handleClick (tabIndex) {
@@ -50,9 +52,7 @@ window.onload = function () {
             handleUpload (el, type) {
                 var file = el.target.files[0]
                 console.log(file)
-                // vFNS3H858is0QqD9H0nGk8s6697Co_60I1gAibun:_DbOrGjvXq5sXUVrW69i5wLdCbs=:eyJzY29wZSI6InhpbmdhZnJpY2EiLCJkZWFkbGluZSI6MTY2MTc4ODIwNX0=
-                const key = file.name;
-                const token = 'vFNS3H858is0QqD9H0nGk8s6697Co_60I1gAibun:5w4CG3lJXXkoOiWKbg26DqsRYBw=:eyJzY29wZSI6InhpbmdhZnJpY2EiLCJkZWFkbGluZSI6MTY2MTc5MjA0N30='; //从服务器拿的并存在本地data里
+                const key = 'shierda/' + Math.ceil(Math.random() * 100000) + file.name;
                 const putExtra = {
                     fname: '',
                     params: {},
@@ -61,7 +61,7 @@ window.onload = function () {
                 const config = {
                     useCdnDomain: true, //使用cdn加速
                 };
-                const observable = qiniu.upload(file, key, token, putExtra, config);
+                const observable = qiniu.upload(file, key, this.qiniuToken, putExtra, config);
 
                 observable.subscribe({
                     next: (result) => {
@@ -74,9 +74,9 @@ window.onload = function () {
                     complete: (res) => {
                         console.log(res.key);
                         if (type == 2) {
-                            this.workInfos.workVideo = `http://tv.xingafrica.com/${res.key}`
+                            this.workInfos.workVideo = 'http://tv.xingafrica.com/' + res.key
                         } else {
-                            this.workInfos.workPhotos.push(`http://tv.xingafrica.com/${res.key}`)
+                            this.workInfos.workPhotos.push('http://tv.xingafrica.com/' + res.key)
                         }
                     },
                 });
@@ -85,10 +85,10 @@ window.onload = function () {
             handleJoin () {
                 // 校验数据
                 var vaildInfo = this.validate()
-                // if (!vaildInfo.valid) {
-                //     window.$util.toast({ title: vaildInfo.msg })
-                //     return
-                // }
+                if (!vaildInfo.valid) {
+                    window.$util.toast({ title: vaildInfo.msg })
+                    return
+                }
                 $.post('http://39.98.40.64:9902/site/submit-content', {
                     name: this.workInfos.name,
                     phone: this.workInfos.tel,
@@ -97,15 +97,20 @@ window.onload = function () {
                     type: this.workType,
                     works_name: this.workInfos.workName,
                     works_content: this.workInfos.workContent,
-                    works_imgs: this.workInfos.workPhotos,
+                    works_imgs: JSON.stringify(this.workInfos.workPhotos),
                     works_video: this.workInfos.workVideo,
                     works_description: this.workInfos.workDesc,
                     verifyCode: this.imgCode,
                 }, function (res) {
                     try {
-                        const _res = JSON.parse(res)
+                        let _res
+                        if (typeof res === 'string') {
+                            _res = JSON.parse(res)
+                        } else {
+                            _res = res
+                        }
                         if (_res.code == 200) {
-
+                            location.href = '/uploadSuccess.html'
                         } else {
                             window.$util.toast({ title: _res.message })
                         }
@@ -194,9 +199,26 @@ window.onload = function () {
             },
 
             getImgCodeUrl () {
+                this.imgCodeUrl = 'http://39.98.40.64:9902/site/captcha?_' + Date.now()
+            },
+
+            getQiniuToken () {
                 var _self = this
-                $.get('http://39.98.40.64:9902/site/captcha?refresh=true', function (res) {
-                    _self.imgCodeUrl = `http://39.98.40.64:9902${res.url}`
+                $.get('http://39.98.40.64:9902/site/get-key', function (res) {
+                    try {
+                        let _res
+                        if (typeof res === 'string') {
+                            _res = JSON.parse(res)
+                        } else {
+                            _res = res
+                        }
+                        if (_res.code == 200) {
+                            _self.qiniuToken = _res.data
+                        }
+                    } catch(e) {
+                        console.error(e)
+                    }
+                    
                 });
             }
         }
