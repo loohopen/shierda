@@ -1,16 +1,17 @@
-
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-body{
+
+body {
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, #FD9054 0%, #F16622 100%);
     overflow: auto;
 }
-.main{
+
+.main {
     max-width: 7.5rem;
     margin: 0 auto;
     background-image: url('../images/main_bg.png');
@@ -18,6 +19,7 @@ body{
     background-size: 100% auto;
     overflow: hidden;
 }
+
 .card {
     position: relative;
     margin: 0 auto;
@@ -28,7 +30,8 @@ body{
     box-shadow: 0px 0.2rem 0.2rem 0px rgba(243, 112, 39, 0.8);
     padding: 1.4rem 0.32rem 0.6rem;
 }
-.card .top{
+
+.card .top {
     position: absolute;
     top: 0;
     left: 50%;
@@ -38,35 +41,42 @@ body{
     background-repeat: no-repeat;
     background-size: 100%;
 }
-.card .top.personal-info-title{
+
+.card .top.personal-info-title {
     background-image: url('../images/personal_info_title.png');
 }
-.card .top.work-title{
+
+.card .top.work-title {
     background-image: url('../images/work_title.png');
 }
-.card .circle{
+
+.card .circle {
     position: absolute;
     top: 0.6rem;
     width: 0.4rem;
     height: 0.4rem;
     border-radius: 0.6rem;
 }
-.card .circle.left-circle{
+
+.card .circle.left-circle {
     left: -0.2rem;
     background: linear-gradient(90deg, #fc8e51 0%, #f88240 100%);
 }
-.card .circle.right-circle{
+
+.card .circle.right-circle {
     right: -0.2rem;
     background: linear-gradient(90deg, #f16924 0%, #f26722 100%);
 }
-.card.personal-info{
+
+.card.personal-info {
     margin-top: 4.22rem;
 }
-.card.work-info{
+
+.card.work-info {
     margin-top: .4rem;
 }
 
-.join-btn{
+.join-btn {
     width: 6.06rem;
     height: 1.14rem;
     margin: 0.6rem auto 1rem;
@@ -76,25 +86,29 @@ body{
 }
 
 /* 输入框 */
-.form-item{
+.form-item {
     display: flex;
     flex-direction: column;
     margin-bottom: 0.48rem;
 }
-.form-item:last-child{
+
+.form-item:last-child {
     margin-bottom: 0;
 }
-.form-item label{
+
+.form-item label {
     display: block;
     color: #F65541;
     font-size: 0.36rem;
     margin-bottom: 0.32rem;
 }
-.form-item label span{
+
+.form-item label span {
     color: #FF8F1F;
     font-size: 0.24rem;
 }
-.form-item .input{
+
+.form-item .input {
     width: 100%;
     height: 0.88rem;
     line-height: 0.88rem;
@@ -105,7 +119,8 @@ body{
     border: 1px solid rgba(0, 0, 0, 0.16);
     font-size: 0.28rem;
 }
-.form-item textarea.input{
+
+.form-item textarea.input {
     height: 4rem;
     line-height: 1em;
     padding-top: 0.32rem;
@@ -113,11 +128,12 @@ body{
 }
 
 /* tab */
-.tab{
+.tab {
     display: flex;
     justify-content: space-between;
 }
-.tab .tab-item{
+
+.tab .tab-item {
     width: 1.8rem;
     height: 0.72rem;
     text-align: center;
@@ -127,12 +143,13 @@ body{
     border-radius: 0.72rem;
     background: linear-gradient(180deg, #E2E2E2 -5%, #BBBBBB 99%);
 }
-.tab .tab-item.actived{
+
+.tab .tab-item.actived {
     background: linear-gradient(180deg, #F4DB15 -5%, #FF7903 99%);
 }
 
 /* 上传样式 */
-.upload{
+.upload {
     width: 2rem;
     height: 2rem;
     border-radius: 6px;
@@ -140,7 +157,8 @@ body{
     border: 0.5px solid #E8E8E9;
     position: relative;
 }
-.upload .file{
+
+.upload .file {
     display: block;
     width: 100%;
     height: 100%;
@@ -149,7 +167,8 @@ body{
     top: 0;
     left: 0;
 }
-.upload .icon{
+
+.upload .icon {
     width: 0.67rem;
     height: 0.67rem;
     background-image: url('../images/add.png');
@@ -157,22 +176,26 @@ body{
     background-size: 100%;
     margin: 0.2rem auto 0.26rem;
 }
-.upload .text{
+
+.upload .text {
     font-size: 0.24rem;
     color: rgba(0, 0, 0, 0.6);
     margin-bottom: 0.1rem;
     padding: 0 0.2rem;
 }
-.upload .tip{
+
+.upload .tip {
     font-size: 0.2rem;
     color: rgba(0, 0, 0, 0.3);
     padding: 0 0.2rem;
 }
-.img-list{
+
+.img-list {
     display: flex;
     flex-wrap: wrap;
 }
-.img-item{
+
+.img-item {
     width: 2rem;
     height: 2rem;
     border-radius: 6px;
@@ -183,15 +206,19 @@ body{
     overflow: hidden;
     position: relative;
 }
-.img-item:nth-child(3), .img-item:nth-child(6){
+
+.img-item:nth-child(3),
+.img-item:nth-child(6) {
     margin-right: 0;
 }
-.img-item img{
+
+.img-item img {
     display: block;
     width: 100%;
     height: 100%;
 }
-.img-item .delete{
+
+.img-item .delete {
     position: absolute;
     left: 0px;
     bottom: 0px;
@@ -199,7 +226,8 @@ body{
     height: 20px;
     background: rgba(0, 0, 0, 0.3);
 }
-.img-item .delete .icon{
+
+.img-item .delete .icon {
     width: 0.32rem;
     height: 0.32rem;
     background-image: url('../images/delete_btn.png');
@@ -210,7 +238,7 @@ body{
 }
 
 /* 视频区域 */
-.no-video{
+.no-video {
     width: 100%;
     height: 3.5rem;
     border-radius: 6px;
@@ -221,7 +249,8 @@ body{
     font-size: 0.24rem;
     position: relative;
 }
-.no-video .bg{
+
+.no-video .bg {
     display: block;
     width: 1.08rem;
     height: 1.08rem;
@@ -230,10 +259,12 @@ body{
     background-size: 100% 100%;
     margin: 0.3rem auto 0.2rem
 }
-.no-video .text{
+
+.no-video .text {
     line-height: 2.2em;
 }
-.no-video .file{
+
+.no-video .file {
     display: block;
     width: 100%;
     height: 100%;
@@ -242,25 +273,106 @@ body{
     top: 0;
     left: 0;
 }
-.video{
+
+.video {
     width: 100%;
     height: 3.5rem;
     display: block;
 }
 
-.photo-work textarea, .video-work textarea{
+.photo-work textarea,
+.video-work textarea {
     margin-bottom: 0.32rem;
 }
 
 .input.has-img-code {
     width: 3.8rem;
 }
-.img-code-input{
+
+.img-code-input {
     display: flex;
     justify-content: space-between;
 }
-.img-code{
+
+.img-code {
     display: block;
     width: 2.2rem;
     height: 0.88rem;
+}
+
+.dialog-mask {
+    z-index: 800;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.dialog-mask .dialog-main {
+    font-size: 0.32rem;
+    color: #BA8459;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 6.74rem;
+    height: 8.06rem;
+    border-radius: 0.68rem;
+    background: linear-gradient(180deg, #FAD6B0 0%, #FCFBF8 100%);
+    box-shadow: inset 0px 10px 33px 0px #FAD9BB;
+}
+
+.dialog-mask .dialog-main .top {
+    position: absolute;
+    left: -0.3rem;
+    top: -2.24rem;
+    width: 7.37rem;
+    height: 3.53rem;
+    background-image: url('/images/success.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.dialog-mask .dialog-main .title {
+    width: 2.57rem;
+    height: 1.34rem;
+    line-height: 1.34rem;
+    font-size: 0.48rem;
+    font-weight: 500;
+    color: #C1602E;
+    text-align: center;
+    margin: 0.82rem auto 0.2rem;
+}
+
+.dialog-mask .dialog-main .main-info {
+    font-size: 0.32rem;
+    font-weight: 500;
+    margin-bottom: 0.52rem;
+}
+
+.dialog-mask .dialog-main .red {
+    color: #FA5151;
+}
+
+.dialog-mask .dialog-main .tips {
+    line-height: 1.6em;
+    margin-bottom: 0.56rem;
+}
+
+.dialog-mask .dialog-main .btn {
+    width: 5.6rem;
+    height: 0.96rem;
+    line-height: 0.96rem;
+    border-radius: 0.96rem;
+    background: linear-gradient(270deg, #FC4C14 0%, #FD7303 100%);
+    font-size: 0.36rem;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    margin: 0 auto 0;
 }

@@ -141,6 +141,25 @@
         </div>
 
         <div class="join-btn" @click="handleJoin"></div>
+
+        <div v-show="successVisiable" class="dialog-mask">
+            <div class="dialog-main">
+                <div class="top"></div>
+                <div class="title">报名成功！</div>
+                <div class="main-info">
+                    你将获得由主办方提供的<span class="red">精美礼品一份</span>
+                </div>
+                <div class="tips">
+                    <span>温馨提示：</span><br>
+                    <span>“最受欢迎奖”摄影作品评选时间：</span><br>
+                    <span class="red">2022年9月28日—2022年9月30日</span><br>
+                    <span>作品展示时间：</span><br>
+                    <span class="red">2022年10月8日至10月下旬</span>
+                </div>
+
+                <div class="btn" @click="handleBack">我知道了</div>
+            </div>
+        </div>
     </div>
 </body>
 

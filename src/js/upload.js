@@ -28,7 +28,8 @@ window.onload = function () {
 
                 imgCode: '',
                 imgCodeUrl: 'http://39.98.40.64:9902/site/captcha?_' + Date.now(),
-                qiniuToken: ''
+                qiniuToken: '',
+                successVisiable: false
             }
         },
         created () {
@@ -89,36 +90,77 @@ window.onload = function () {
                     window.$util.toast({ title: vaildInfo.msg })
                     return
                 }
-                $.post('http://39.98.40.64:9902/site/submit-content', {
-                    name: this.workInfos.name,
-                    phone: this.workInfos.tel,
-                    address: this.workInfos.address,
-                    work_place: this.workInfos.company,
-                    type: this.workType,
-                    works_name: this.workInfos.workName,
-                    works_content: this.workInfos.workContent,
-                    works_imgs: JSON.stringify(this.workInfos.workPhotos),
-                    works_video: this.workInfos.workVideo,
-                    works_description: this.workInfos.workDesc,
-                    verifyCode: this.imgCode,
-                }, function (res) {
-                    try {
-                        let _res
-                        if (typeof res === 'string') {
-                            _res = JSON.parse(res)
-                        } else {
-                            _res = res
-                        }
-                        if (_res.code == 200) {
-                            location.href = '/uploadSuccess.html'
-                        } else {
-                            window.$util.toast({ title: _res.message })
-                        }
-                    } catch (e) {
-                        console.error(e)
-                    }
 
-                });
+                $.ajax({
+                    url: 'http://39.98.40.64:9902/site/submit-content',
+                    data: {
+                        name: this.workInfos.name,
+                        phone: this.workInfos.tel,
+                        address: this.workInfos.address,
+                        work_place: this.workInfos.company,
+                        type: this.workType,
+                        works_name: this.workInfos.workName,
+                        works_content: this.workInfos.workContent,
+                        works_imgs: JSON.stringify(this.workInfos.workPhotos),
+                        works_video: this.workInfos.workVideo,
+                        works_description: this.workInfos.workDesc,
+                        verifyCode: this.imgCode,
+                    },
+                    dataType: 'json',
+                    type: 'POST',
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    crossDomain: true,
+                    success: function (res) {
+                        try {
+                            let _res
+                            if (typeof res === 'string') {
+                                _res = JSON.parse(res)
+                            } else {
+                                _res = res
+                            }
+                            if (_res.code == 200) {
+                                this.successVisiable = true
+                            } else {
+                                window.$util.toast({ title: _res.message })
+                            }
+                        } catch (e) {
+                            console.error(e)
+                        }
+    
+                    }
+                })
+                // $.post('http://39.98.40.64:9902/site/submit-content', {
+                //     name: this.workInfos.name,
+                //     phone: this.workInfos.tel,
+                //     address: this.workInfos.address,
+                //     work_place: this.workInfos.company,
+                //     type: this.workType,
+                //     works_name: this.workInfos.workName,
+                //     works_content: this.workInfos.workContent,
+                //     works_imgs: JSON.stringify(this.workInfos.workPhotos),
+                //     works_video: this.workInfos.workVideo,
+                //     works_description: this.workInfos.workDesc,
+                //     verifyCode: this.imgCode,
+                // }, function (res) {
+                //     try {
+                //         let _res
+                //         if (typeof res === 'string') {
+                //             _res = JSON.parse(res)
+                //         } else {
+                //             _res = res
+                //         }
+                //         if (_res.code == 200) {
+                //             location.href = '/uploadSuccess.html'
+                //         } else {
+                //             window.$util.toast({ title: _res.message })
+                //         }
+                //     } catch (e) {
+                //         console.error(e)
+                //     }
+
+                // });
             },
 
             validate () {
@@ -204,22 +246,52 @@ window.onload = function () {
 
             getQiniuToken () {
                 var _self = this
-                $.get('http://39.98.40.64:9902/site/get-key', function (res) {
-                    try {
-                        let _res
-                        if (typeof res === 'string') {
-                            _res = JSON.parse(res)
-                        } else {
-                            _res = res
+                $.ajax({
+                    url: 'http://39.98.40.64:9902/site/get-key',
+                    data: {},
+                    dataType: 'json',
+                    type: 'get',
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    crossDomain: true,
+                    success: function (res) {
+                        try {
+                            let _res
+                            if (typeof res === 'string') {
+                                _res = JSON.parse(res)
+                            } else {
+                                _res = res
+                            }
+                            if (_res.code == 200) {
+                                _self.qiniuToken = _res.data
+                            }
+                        } catch (e) {
+                            console.error(e)
                         }
-                        if (_res.code == 200) {
-                            _self.qiniuToken = _res.data
-                        }
-                    } catch(e) {
-                        console.error(e)
+    
                     }
-                    
-                });
+                })
+                // $.get('http://39.98.40.64:9902/site/get-key', function (res) {
+                //     try {
+                //         let _res
+                //         if (typeof res === 'string') {
+                //             _res = JSON.parse(res)
+                //         } else {
+                //             _res = res
+                //         }
+                //         if (_res.code == 200) {
+                //             _self.qiniuToken = _res.data
+                //         }
+                //     } catch (e) {
+                //         console.error(e)
+                //     }
+
+                // });
+            },
+
+            handleBack() {
+                location.href = '/index.html'
             }
         }
     })
