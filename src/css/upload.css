@@ -194,7 +194,17 @@ body {
     display: flex;
     flex-wrap: wrap;
 }
-
+.text-work .img-list{
+    flex-direction: column;
+}
+.text-work .img-list .item-wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+.text-work .img-list .item-wrapper .input{
+    width: calc(100% - 2.3rem);
+    height: 2rem;
+}
 .img-item {
     width: 2rem;
     height: 2rem;

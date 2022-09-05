@@ -15,6 +15,8 @@ window.onload = function () {
                     workContent: '',
                     workPhotos: [],
 
+                    textWorkPhotoText: ['', '', ''],
+
                     // 照片活动
                     workDesc: '',
 
@@ -27,7 +29,7 @@ window.onload = function () {
                 workType: 1, // 1 征文 2 照片 3 短视频
 
                 imgCode: '',
-                imgCodeUrl: 'http://39.98.40.64:9902/site/captcha?_' + Date.now(),
+                imgCodeUrl: '/site/captcha?_' + Date.now(),
                 qiniuToken: '',
                 successVisiable: false
             }
@@ -91,9 +93,18 @@ window.onload = function () {
                     window.$util.toast({ title: vaildInfo.msg })
                     return
                 }
+                // 如果是征文类型的，作品描述是 配图的描述组合
+                var _workDesc = ''
+                if (this.workType === 1) {
+                    _workDesc = this.workInfos.textWorkPhotoText.filter(item => {
+                        return item.replace(/\s+/g, '')
+                    }).join('$$')
+                } else {
+                    _workDesc = this.workInfos.workDesc
+                }
 
                 $.ajax({
-                    url: 'http://39.98.40.64:9902/site/submit-content',
+                    url: '/site/submit-content',
                     data: {
                         name: this.workInfos.name,
                         phone: this.workInfos.tel,
@@ -104,7 +115,7 @@ window.onload = function () {
                         works_content: this.workInfos.workContent,
                         works_imgs: JSON.stringify(this.workInfos.workPhotos),
                         works_video: this.workInfos.workVideo,
-                        works_description: this.workInfos.workDesc,
+                        works_description: _workDesc,
                         verifyCode: this.imgCode,
                     },
                     dataType: 'json',
@@ -212,13 +223,13 @@ window.onload = function () {
             },
 
             getImgCodeUrl () {
-                this.imgCodeUrl = 'http://39.98.40.64:9902/site/captcha?_' + Date.now()
+                this.imgCodeUrl = '/site/captcha?_' + Date.now()
             },
 
             getQiniuToken () {
                 var _self = this
                 $.ajax({
-                    url: 'http://39.98.40.64:9902/site/get-key',
+                    url: '/site/get-key',
                     data: {},
                     dataType: 'json',
                     type: 'get',
