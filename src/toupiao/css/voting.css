@@ -1,0 +1,97 @@
+body {
+  background: linear-gradient(90deg, #FD9054 0%, #F16622 100%);
+  margin: 0;
+}
+
+html,
+body,
+p {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 7.5rem;
+  max-width: 7.5rem;
+  margin: 0 auto;
+  background-image: url('../images/main.png');
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.content {
+  width: 100%;
+  margin-top: 4.1rem;
+  padding: 0 0.32rem;
+}
+
+.card {
+  width: 100%;
+  position: relative;
+  /* margin: 0 auto; */
+  border-radius: 0.12rem;
+  background: #FDF6E9;
+  box-shadow: 0 0.2rem 0.2rem 0.2rem rgba(243, 112, 39, 0.8);
+  padding: 0.32rem 0.32rem 0.26rem 0.32rem;
+  margin-bottom: 0.32rem;
+}
+
+.picture {
+  width: 100%;
+  height: 2.96rem;
+  /* background: url('../images/mytrop.jpg'); */
+  background-repeat: no-repeat;
+  background-size: 100% 2.96rem;
+}
+
+.write {
+  margin: 0 auto;
+  width: 100%;
+  /* height: 0.96rem;  */
+  font-family: OPPOSans-M;
+  font-size: 0.32rem;
+  font-weight: 500;
+  line-height: 0.48rem;
+  letter-spacing: 0px;
+  margin-top: 0.2rem;
+  color: #222229;
+}
+
+.vote {
+  margin-top: 0.1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.vote-num {
+  width: 3.68rem;
+  height: 0.32rem;
+  font-size: 0.36rem;
+  font-weight: 500;
+  line-height: 0.32rem;
+  letter-spacing: 0px;
+  color: #F94B30;
+}
+
+.num {
+  font-size: 0.36rem;
+}
+
+.text {
+  font-size: 0.28rem;
+}
+
+.voting-btn {
+  width: 2.38rem;
+  height: 0.68rem;
+  background-color: #F94B30;
+  background: url('../images/voting_btn.png');
+  background-size: 2.38rem 0.68rem;
+
+}

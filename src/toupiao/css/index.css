@@ -1,0 +1,63 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+body,
+html{
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 7.5rem;
+  height: 100%;
+  margin: 0 auto;
+  background-image: url('../images/index.png');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: 0px -1.5rem;
+  background-color: #fac697;
+  overflow: hidden;
+  position: relative;
+}
+
+.container-footer {
+  width: 100%;
+  height: 3.5rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 0.6rem;
+  line-height: 0.52rem;
+}
+
+.vote-btn {
+  width: 6.06rem;
+  height: 1.04rem;
+  background-image: url('../images/vote_btn.png');
+  background-size: 100% 100%;
+  animation: breath 1.1s infinite;
+  margin: 0 auto;
+}
+
+.rule-btn {
+  width: 6.06rem;
+  height: 1.04rem;
+  margin: 0.71rem auto 0;
+  background-image: url('../images/rules_btn.png');
+  background-size: 100% 100%;
+}
+
+
+
+
+
+
+
+ 
+
+
+ 
+
