@@ -1,0 +1,23 @@
+{
+  "code": 200,
+  "data": {
+    "id": 41,
+    "name": "蒋怡雯",
+    "phone": "13764039896",
+    "work_place": "上海绿妮瓜果专业合作社",
+    "type": 2,
+    "works_name": "稻花香里说丰年，听取蛙声一片",
+    "works_content": "",
+    "works_imgs": [
+      "http://tv.xingafrica.com/shierda/38237CFEDBD0C-630C-4A37-A2FC-5B0F55725CB5.jpeg",
+      "http://tv.xingafrica.com/shierda/563792798BC3-3D49-4DCE-975F-F6B51DF2A15F.jpeg",
+      "http://tv.xingafrica.com/shierda/1250769CE47EA-4585-4B48-BF20-9ECEE74166A6.jpeg",
+      "http://tv.xingafrica.com/shierda/355309A3241C9-9E8A-40A4-A2DC-D36F64481FAD.jpeg",
+      "http://tv.xingafrica.com/shierda/97012462CEFF9-6A7A-498C-8D45-5360E86BC4A6.jpeg"
+    ],
+    "works_video": "",
+    "works_description": "产业兴旺是乡村振兴的物质基础。惠南镇水稻种植面积近1万亩，通过打造海沈村稻蛙共生新模式示范基地，培育高标准的农业项目，可以发挥示范带动作用，形成绿色优质稻米生产基地，带动农业增效农民增收，以产业兴旺助力乡村振兴。在示范成功的基础上，稻蛙共生模式将向全镇辐射，通过发展绿色生态的蛙稻种养模式，努力实现生态效益、社会效益、经济效益三丰收。",
+    "address": "上海市浦东新区惠南镇拱极路3860号",
+    "voteNum": "0"
+  }
+}

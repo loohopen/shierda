@@ -151,3 +151,119 @@ p {
   width: 100%;
   font-size: 0;
 }
+
+.dialog-mask {
+  z-index: 800;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+ 
+}
+
+.dialog-mask .dialog-main {
+  font-size: 0.32rem;
+  color: #BA8459;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 6.74rem;
+  /* height: 5.06rem; */
+  border-radius: 0.68rem;
+  background: linear-gradient(180deg, #FAD6B0 0%, #FCFBF8 100%);
+  box-shadow: inset 0px 10px 33px 0px #FAD9BB;
+}
+.first{
+  height: 5.06rem;
+}
+
+.second{
+  padding-bottom: 0.6rem;
+}
+.dialog-mask .dialog-main .top {
+  position: absolute;
+  left: -0.3rem;
+  top: -2.24rem;
+  width: 7.37rem;
+  height: 3.53rem;
+  /* background-image: url('/images/success.png'); */
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.success-img{
+  background-image: url('/images/success.png');
+}
+.failure-img{
+  background-image: url('../images/failure.png');
+}
+.success{
+  display: none;
+}
+.failure{
+  display:none;
+}
+.dialog-mask .dialog-main .title {
+  /* width: 2.57rem; */
+  height: 1.34rem;
+  line-height: 1.34rem;
+  font-size: 0.48rem;
+  font-weight: 500;
+  color: #C1602E;
+  text-align: center;
+  margin: 0.82rem auto 0.2rem;
+}
+.dialog-mask .dialog-main .main-info {
+  font-size: 0.32rem;
+  font-weight: 500;
+  margin-bottom: 0.52rem;
+}
+.notice{
+  text-align: left;
+    padding-left: 0.6rem;
+    margin-bottom: 0.1rem;
+}
+.dialog-mask .dialog-main .red {
+  color: #FA5151;
+}
+
+.dialog-mask .dialog-main .tips {
+  line-height: 1.6em;
+  margin-bottom: 0.56rem;
+}
+
+.dialog-mask .dialog-main .btn {
+  width: 5.6rem;
+  height: 0.96rem;
+  line-height: 0.96rem;
+  border-radius: 0.96rem;
+  background: linear-gradient(270deg, #FC4C14 0%, #FD7303 100%);
+  font-size: 0.36rem;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  margin: 0 auto 0;
+}
+.guide{
+  display: none;
+}
+#guide-box {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 4rem;
+}
+.guide-point {
+  display: block;
+  width: 4rem;
+}
+.guide-btn {
+  display: block;
+  width: 2rem;
+  margin: 0 auto;
+}

@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/component.css">
   <link rel="stylesheet" href="css/swiper-bundle.min.css">
   <link rel="stylesheet" href="css/introduce.css">
 
@@ -51,13 +52,117 @@
       </div>
 
     </div>
+
+    <div class="dialog-mask success">
+      <div class="dialog-main first">
+        <div class="top success-img"></div>
+        <div class="title"> 投票成功</div>
+        <div class="main-info">
+          投票成功，该作品已获得<span class="red">1</span>票
+        </div>
+
+        <div class="btn">我知道了</div>
+      </div>
+    </div>
+
+    <div class="dialog-mask failure">
+      <div class="dialog-main second">
+        <div class="top failure-img"></div>
+        <div class="title">投票失败，投票次数已用完</div>
+        <div class="tips">
+          <p class="notice">温馨提示：</p>
+          <span>【上农APP】和【上海三农】微信公众号</span><br>
+          <span class="red">可获5次投票机会</span><br>
+          <!-- <span>作品展示时间：</span><br>
+          <span class="red">2022年10月8日至10月下旬</span> -->
+        </div>
+
+        <div class="btn btn-second">我知道了</div>
+      </div>
+    </div>
+    <div class="dialog-mask guide">
+      <div id="guide-box">
+        <img src="/toupiao/images/guide_point.png" class="guide-point">
+        <img src="/toupiao/images/guide_btn.png" class="guide-btn">
+      </div>
+    </div>
+  </div>
+
   </div>
   <div class="container-footer">
     <div class="join-btn"></div>
   </div>
-  <script src="js/swiper-bundle.min.js"></script>
-  <script src="js/introduce.js"></script>
 
+  <script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>
+  <script>
+    // VConsole 默认会挂载到 `window.VConsole` 上
+    var vConsole = new window.VConsole();
+  </script>
+
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/1.5.1/fingerprint2.min.js"></script>
+  <script>
+    var fp = new Fingerprint2();
+    fp.get(function (result) {
+      window.$$appid = result
+    });
+  </script>
+  <script src="/lib/jquery.js"></script>
+  <script src="//res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+  <script>
+    function is_weixn () {
+      var ua = navigator.userAgent.toLowerCase();
+      if (ua.match(/MicroMessenger/i) == "micromessenger") {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    if (is_weixn()) {
+
+      $.get("/wxApi/getsign?url=" + encodeURIComponent(location.href), function (res) {
+        wx.config({
+          debug: false, // 开启调试模式
+          appId: "wxa73339526e18dbbe", // 必填，公众号的唯一标识
+          timestamp: res.timestamp, // 必填，生成签名的时间戳
+          nonceStr: res.noncestr, // 必填，生成签名的随机串
+          signature: res.signature,// 必填，签名，见附录1
+          jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'updateAppMessageShareData',
+            'updateTimelineShareData'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
+        wx.ready(function () { //需在用户可能点击分享按钮前就先调用
+          console.log('---------')
+          const data = {
+            title: '测试JSSDK', // 分享标题
+            desc: '后端端口签名测试', // 分享描述
+            link: location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: 'https://cdn.lifeat.cn/webappgroup/betterLifelogo.png', // 分享图标
+            success: function () {
+              // 设置成功
+              console.log('=-=-=-=-=')
+              var guide = document.getElementsByClassName('guide')[0];
+              guide.style.display = 'none';
+            }
+          }
+          wx.updateAppMessageShareData(data);
+          wx.updateTimelineShareData(data);
+          // wx.onMenuShareTimeline(data);
+          // wx.onMenuShareAppMessage(data);
+        });
+
+        wx.error(function (res) {
+          console.log(res, '-=-=x')
+          // config信息验证失败会执行 error 函数，如签名过期导致验证失败，具体错误信息可以打开 config 的debug模式查看，也可以在返回的 res 参数中查看，对于 SPA 可以在这里更新签名。
+        });
+
+      })
+    }
+
+  </script>
+
+  <script src="js/swiper-bundle.min.js"></script>
+  <script src="/js/component.js"></script>
+  <script src="/toupiao/js/introduce.js"></script>
 </body>
 
 </html>

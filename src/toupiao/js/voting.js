@@ -1,44 +1,53 @@
 window.onload = function () {
-  var vote = [
-    {
-      id: '1',
-      picture: '/toupiao/images/mytrop.jpg',
-      write: '故国神游，多情应笑我，早生华发。人生如梦，一尊还酹江月。故国神游，多情应笑我，早生华发。人生如梦，一尊还酹江月。',
-      num: 1
-    },
-    {
-      id: '2',
-      picture: '/toupiao/images/mountain.png',
-      write: '故国神游，多情应笑我，早生华发。人生如梦，一尊还酹江月。故国神游，多情应笑我，早生华发。人生如梦，一尊还酹江月。',
-      num: 22
-    },
-    {
-      id: '3',
-      picture: '/toupiao/images/mountain.png',
-      write: '故国神游，多情应笑我，早生华发。人生如梦，一尊还酹江月。故国神游，多情应笑我，早生华发。人生如梦，一尊还酹江月。',
-      num: 22
-    },
-    {
-      id: '4',
-      picture: '/toupiao/images/mytrop.jpg',
-      write: '故国神游，多情应笑我，早生华发。人生如梦，一尊还酹江月。故国神游，多情应笑我，早生华发。人生如梦，一尊还酹江月。',
-      num: 22
-    }
-  ];
-  console.log("1");
-  var content = document.getElementsByClassName("content")[0];
-  var showHtml = '';
-  for (var a = 0; a < vote.length; a++) {
-    showHtml += 
-    '<div class="card">' +
-      '<div class="picture" style="background-image:url('+ vote[a]['picture'] + ')"></div>' +
-      '<div class="write">' + vote[a]['write'] + '</div>' +
-      '<div class="vote"> ' +
-        '<div class="vote-num"><span class="num">' + vote[a]['num'] + '</span><span class="text">票</span></div>' +
-        '<div class="voting-btn"></div>' +
-      '</div>' +
-    '</div>';
+  function getWorkList () {
+    $.ajax({
+      url: '/site/list' + (/\.com/.test(location.host) ? '': '.json'),
+      data: {},
+      dataType: 'json',
+      type: 'get',
+      success: function (res) {
+        if (res.code == 200) {
+          var datas = (res.data || []).map(item => {
+            try {
+              item.works_imgs = JSON.parse(item.works_imgs)
+            } catch(e) {
+              item.works_imgs = []
+            }
+            return item
+          })
+          setContentHtml(datas)
+        }else {
+          window.$util.toast({ title: '系统异常，请稍后再试！' })
+        }
+      }
+    })
   }
 
-  content.innerHTML = showHtml;
+  function setContentHtml (vote) {
+    var content = document.getElementsByClassName("content")[0];
+    var showHtml = '';
+    for (var a = 0; a < vote.length; a++) {
+      showHtml +=
+        '<div class="card">' +
+        (vote[a]['works_imgs'][0] ? '<div class="picture" style="background-image:url(' + vote[a]['works_imgs'][0] + ')"></div>': '') +
+        '<div class="write">' + vote[a]['name'] + '</div>' +
+        '<div class="vote"> ' +
+        '<div class="vote-num"><span class="num">' + vote[a]['voteNum'] + '</span><span class="text">票</span></div>' +
+        '<div class="voting-btn" data-id="'+ vote[a]['id'] + '"></div>' +
+        '</div>' +
+        '</div>';
+    }
+    content.innerHTML = showHtml;
+
+    // 绑定事件
+    var btns = document.getElementsByClassName('voting-btn')
+    for (let i = 0; i < btns.length; i++) {
+      btns[i].onclick = function() {
+        // 通过 dom 上设置 data-xxx=“YYY” 的值 可以通过dom.dataset.xxx获取到
+        location.href = '/toupiao/introduce.html?id=' + this.dataset.id
+      };
+    }
+  }
+
+  getWorkList()
 }
