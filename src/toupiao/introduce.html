@@ -93,7 +93,6 @@
     <div class="join-btn"></div>
   </div>
 
-  <script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>
   <script>
     // VConsole 默认会挂载到 `window.VConsole` 上
     var vConsole = new window.VConsole();
@@ -123,18 +122,18 @@
       $.get("/wxApi/getsign?url=" + encodeURIComponent(location.href), function (res) {
         wx.config({
           debug: false, // 开启调试模式
-          appId: "wxa73339526e18dbbe", // 必填，公众号的唯一标识
+          appId: "wx4bb35cdaf50dee89", // 必填，公众号的唯一标识
           timestamp: res.timestamp, // 必填，生成签名的时间戳
           nonceStr: res.noncestr, // 必填，生成签名的随机串
           signature: res.signature,// 必填，签名，见附录1
-          jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'updateAppMessageShareData',
+          jsApiList: ['updateAppMessageShareData',
             'updateTimelineShareData'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
         });
         wx.ready(function () { //需在用户可能点击分享按钮前就先调用
           console.log('---------')
           const data = {
-            title: '测试JSSDK', // 分享标题
-            desc: '后端端口签名测试', // 分享描述
+            title: '快来投他/她一票', // 分享标题
+            desc: '“青春聚力‘照’亮乡村”摄影作品投票评选', // 分享描述
             link: location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
             imgUrl: 'https://cdn.lifeat.cn/webappgroup/betterLifelogo.png', // 分享图标
             success: function () {

@@ -12,7 +12,7 @@ window.onload = function () {
     var swiperWrapper = document.getElementsByClassName(" swiper-wrapper")[0];
     var _html = ''
     for (var a = 0; a < introduce['picture'].length; a++) {
-      _html += '<div class="swiper-slide"><img class="swiper-img" src="' + introduce['picture'][a] + '" alt=""></div>';
+      _html += '<div class="swiper-slide"><img class="swiper-img" src="' + introduce['picture'][a] + '?imageView2/1/w/622/h/460/interlace/1/q/90|imageslim" alt=""></div>';
     }
     swiperWrapper.innerHTML = _html;
   }

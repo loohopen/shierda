@@ -1,22 +1,16 @@
 {
   "code": 200,
   "data": {
-    "id": 41,
-    "name": "蒋怡雯",
-    "phone": "13764039896",
-    "work_place": "上海绿妮瓜果专业合作社",
+    "id": 40,
+    "name": "吴佳芬",
+    "phone": "18217400059",
+    "work_place": "上海南汇瓜果有限公司",
     "type": 2,
-    "works_name": "稻花香里说丰年，听取蛙声一片",
+    "works_name": "探索美丽乡村之连民村",
     "works_content": "",
-    "works_imgs": [
-      "http://tv.xingafrica.com/shierda/38237CFEDBD0C-630C-4A37-A2FC-5B0F55725CB5.jpeg",
-      "http://tv.xingafrica.com/shierda/563792798BC3-3D49-4DCE-975F-F6B51DF2A15F.jpeg",
-      "http://tv.xingafrica.com/shierda/1250769CE47EA-4585-4B48-BF20-9ECEE74166A6.jpeg",
-      "http://tv.xingafrica.com/shierda/355309A3241C9-9E8A-40A4-A2DC-D36F64481FAD.jpeg",
-      "http://tv.xingafrica.com/shierda/97012462CEFF9-6A7A-498C-8D45-5360E86BC4A6.jpeg"
-    ],
+    "works_imgs": "[\"http://tv.xingafrica.com/shierda/778646D65D806-ED3A-4068-9355-1A7857A63465.jpeg\",\"http://tv.xingafrica.com/shierda/87402DB6722A4-0118-4D9F-A30E-91F5D0F4F32D.jpeg\",\"http://tv.xingafrica.com/shierda/25201F603D3D2-BA51-4CF4-B60D-A9CA4F50283B.jpeg\",\"http://tv.xingafrica.com/shierda/97371D6ED8536-7F43-4E47-83DD-5A001916DE26.jpeg\",\"http://tv.xingafrica.com/shierda/454889E71629D-5591-4BC8-B608-CB8753CCC566.jpeg\"]",
     "works_video": "",
-    "works_description": "产业兴旺是乡村振兴的物质基础。惠南镇水稻种植面积近1万亩，通过打造海沈村稻蛙共生新模式示范基地，培育高标准的农业项目，可以发挥示范带动作用，形成绿色优质稻米生产基地，带动农业增效农民增收，以产业兴旺助力乡村振兴。在示范成功的基础上，稻蛙共生模式将向全镇辐射，通过发展绿色生态的蛙稻种养模式，努力实现生态效益、社会效益、经济效益三丰收。",
+    "works_description": "连民村是浦东川沙新镇西南角落的一座小村庄，水系资源十分丰富，以五灶港为轴心，“五横五纵”的河流和浓郁的田园风光，赋予了连民村灵动秀丽的独特气质。果蔬特色农业也很发达，处处充斥着与都市截然不同的天然原生之美。近年来以建设美丽乡村为目标，景观水系和庭院的颜值更上一层楼，大大小小的湖荡星罗棋布，水乡人家栖居此间，一年四季风景如画。",
     "address": "上海市浦东新区惠南镇拱极路3860号",
     "voteNum": "0"
   }

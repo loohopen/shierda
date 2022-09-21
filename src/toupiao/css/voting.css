@@ -41,11 +41,11 @@ p {
 }
 
 .picture {
+  display: block;
   width: 100%;
-  height: 2.96rem;
-  /* background: url('../images/mytrop.jpg'); */
+  height: 4rem;
   background-repeat: no-repeat;
-  background-size: 100% 2.96rem;
+  background-size: cover;
 }
 
 .write {
