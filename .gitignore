@@ -1,3 +1,4 @@
 shierda
 shierda.zip
 *.zip
+*/**/node_modules
