@@ -386,3 +386,26 @@ body {
     color: #fff;
     margin: 0 auto 0;
 }
+.loading-bar-wrapper{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 6rem;
+    height: 0.2rem;
+    border-radius: 0.2rem;
+    background-color: #fff;
+}
+.loading-bar-wrapper .loading-bar{
+    border-radius: 0.2rem;
+    height: 100%;
+    background: linear-gradient(270deg, #FC4C14 0%, #FD7303 100%);
+}
+.loading-bar-wrapper .text{
+    color: #fff;
+    position: absolute;
+    top: -0.5rem;
+    font-size: .3rem;
+    width: 100%;
+    text-align: center;
+}

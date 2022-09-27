@@ -31,7 +31,9 @@ window.onload = function () {
                 imgCode: '',
                 imgCodeUrl: '/site/captcha?_' + Date.now(),
                 qiniuToken: '',
-                successVisiable: false
+                successVisiable: false,
+                uploadVisiable: false,
+                percent: 0
             }
         },
         created () {
@@ -53,29 +55,35 @@ window.onload = function () {
             },
 
             handleUpload (el, type) {
+                var _self = this
                 var file = el.target.files[0]
                 console.log(file)
-                const key = 'shierda/' + Math.ceil(Math.random() * 100000) + file.name;
-                const putExtra = {
+                var key = 'shierda/' + Math.ceil(Math.random() * 100000) + file.name;
+                var putExtra = {
                     fname: '',
                     params: {},
-                    mimeType: ['image/png', 'image/jpeg', 'image/gif'],
+                    mimeType: ['image/png', 'image/jpeg', 'image/gif', 'application/octet-stream', 'video/mp4', 'application/x-mpegURL', 'video/x-flv'],
                 };
-                const config = {
+                var config = {
                     useCdnDomain: true, //使用cdn加速
+                    forceDirect: true
                 };
-                const observable = qiniu.upload(file, key, this.qiniuToken, putExtra, config);
-
+                var observable = qiniu.upload(file, key, this.qiniuToken, putExtra, config);
+                _self.uploadVisiable = true
                 observable.subscribe({
                     next: (result) => {
                         // 主要用来展示进度
+                        _self.percent = (result.total.percent).toFixed(2)
                         console.warn(result);
                     },
                     error: () => {
-                        alert('上传图片失败');
+                        _self.uploadVisiable = false
+                        _self.percent = 0
+                        alert('上传失败');
                     },
                     complete: (res) => {
-                        console.log(res.key);
+                        _self.uploadVisiable = false
+                        _self.percent = 0
                         if (type == 2) {
                             this.workInfos.workVideo = 'http://tv.xingafrica.com/' + res.key
                         } else {
@@ -126,7 +134,7 @@ window.onload = function () {
                     crossDomain: true,
                     success: function (res) {
                         try {
-                            let _res
+                            var _res
                             if (typeof res === 'string') {
                                 _res = JSON.parse(res)
                             } else {
@@ -239,7 +247,7 @@ window.onload = function () {
                     crossDomain: true,
                     success: function (res) {
                         try {
-                            let _res
+                            var _res
                             if (typeof res === 'string') {
                                 _res = JSON.parse(res)
                             } else {

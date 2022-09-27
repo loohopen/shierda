@@ -170,6 +170,13 @@
                 <div class="btn" @click="handleBack">我知道了</div>
             </div>
         </div>
+
+        <div v-show="uploadVisiable" class="dialog-mask">
+            <div class="loading-bar-wrapper">
+                <div class="text">上传中{{percent}}%...</div>
+                <div class="loading-bar" :style="{width: percent + '%'}"></div>
+            </div>
+        </div>
     </div>
 </body>
 
