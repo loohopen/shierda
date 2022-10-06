@@ -339,12 +339,12 @@ border: 2.92px solid #231815;
 }
 .card-phtoto {
   width: 5.5rem;
-  height: 2.2rem;
+  height: 2.03rem;
   margin: 0 auto;
   padding-top: 0.12rem;
   background-image: url('../images/card_first.png');
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: 100% auto;
   position: relative;
 }
 .cooking-photo{

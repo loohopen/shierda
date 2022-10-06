@@ -16,7 +16,7 @@ window.onload = function () {
   for (var a = 0; a < coldFood.length; a++) {
     _html += '<div class="card">' +
       '<div class="card-text">' +
-      '<div class="card-phtoto" style="background-image: url(' + coldFood[a]['img'] + ')"></div>' +
+      '<div class="card-phtoto" style="background-image: url(' + coldFood[a]['img1'] + ')"></div>' +
       '<div class="card-bottom">' + coldFood[a]['name'] + '</div>' +
       '</div>' +
       '<div class="card-bg">' +
@@ -39,7 +39,7 @@ window.onload = function () {
       '</div>' +
       ' <div class="header-text">'+riceMenu[a]['name']+'</div>' +
       '</div>' +
-      '<div class="card-phtoto" style="background-image: url(' + riceMenu[a]['img'] + ')"></div>' +
+      '<div class="card-phtoto" style="background-image: url(' + riceMenu[a]['img1'] + ')"></div>' +
       '<div class="card-bottom">' + riceMenu[a]['desc'] + '</div>' +
       '</div>' +
       '<div class="card-bg">' +
@@ -55,7 +55,7 @@ window.onload = function () {
   for (var a = 0; a < afternoonTea.length; a++) {
     myafternoonTea+= '<div class="card">' +
       '<div class="card-text">' +
-      '<div class="card-phtoto" style="background-image: url(' + afternoonTea[a]['img'] + ')"></div>' +
+      '<div class="card-phtoto" style="background-image: url(' + afternoonTea[a]['img1'] + ')"></div>' +
       '<div class="card-bottom">' + afternoonTea[a]['desc'] + '</div>' +
       '</div>' +
       '<div class="card-bg">' +
