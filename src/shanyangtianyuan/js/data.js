@@ -7,13 +7,13 @@ window.homeMenu = [
     advice: '芳心园',
     desc: '采用鸡、黄瓜、胡萝卜、香菜芝麻等原料制成，是一道寓意非常好的菜肴。一捞风生水起，二捞步步高升，三捞生意兴隆，四捞身体健康，五捞万事如意，六捞六六大顺，七捞大吉大利，八捞勤劳致富，九捞财源滚滚，十捞十全十美。',
     img: '/shanyangtianyuan/images/cook.png',
-    cookie: '<p>1.将鸡肉清洗干净；</p><br>;' +
-      '<p>2.锅中加适量水，加入葱、姜并将水烧开；</p><br>;' +
-      '<p>3.将鸡肉放到开水中后马上捞起，重复三次，将鸡皮烫熟；</p><br>;' +
-      '<p>4.将鸡放入开水中煮30分钟左右，捞出晾凉；</p><br>;' +
-      '<p>5.将鸡皮完整取下，鸡肉和鸡骨分离，鸡肉撕成鸡丝，将鸡皮改刀切长条放在鸡肉上方；</p><br>;' +
-      '<p>6.将花生油、盐、沙姜粉调成酱汁；</p><br>;' +
-      '<p>7.将黄瓜、胡萝卜、京葱、洋葱切丝摆盘。</p><br>;',
+    cookie: '<p class="step-item">1.将鸡肉清洗干净；</p>' +
+      '<p class="step-item">2.锅中加适量水，加入葱、姜并将水烧开；</p>' +
+      '<p class="step-item">3.将鸡肉放到开水中后马上捞起，重复三次，将鸡皮烫熟；</p>' +
+      '<p class="step-item">4.将鸡放入开水中煮30分钟左右，捞出晾凉；</p>' +
+      '<p class="step-item">5.将鸡皮完整取下，鸡肉和鸡骨分离，鸡肉撕成鸡丝，将鸡皮改刀切长条放在鸡肉上方；</p>' +
+      '<p class="step-item">6.将花生油、盐、沙姜粉调成酱汁；</p>' +
+      '<p class="step-item">7.将黄瓜、胡萝卜、京葱、洋葱切丝摆盘。</p>',
     address: '上海市金山区吕巷镇金张公路1818号'
   },
   {
@@ -21,8 +21,8 @@ window.homeMenu = [
     category: 1, // 1 冷菜
     advice: '上海珍新农业专业合作社',
     desc: '上海熏鱼呈酱红色，青鱼的鲜美肉质，密而不硬，肉质酥松、入口甜香，油炸的外焦内嫩，丝丝缕缕中都渗透了鲜和甜的味道，无论喝酒还是饮茶，夹一块慢慢享用，江南山水如映眼前，吟诗作画各得其所。',
-    img: '/shanyangtianyuan/images/cook.png',
-    cookie: '<p></p><br>;' +
+    img: '/shanyangtianyuan/images/card_first.png',
+    cookie: '<p></p>' +
       '<p></p><br>;' +
       '<p></p><br>;' +
       '<p></p><br>;' +
@@ -60,7 +60,7 @@ window.homeMenu = [
     category: 2, // 1 热菜
     advice: '韩湘水博园（上海江川园艺有限公司）',
     desc: '梭子蟹加上黑松露米饭，鲜香可口、口感饱满、软嫩滑爽，吃一口，心满意足。',
-    img: '/shanyangtianyuan/images/cook.png',
+    img: '/shanyangtianyuan/images/card_first.png',
     cookie:
       '<p>1.将东海梭子蟹清洗干净</p><br>;' +
       '<p>2.将葱姜蒜剥去外皮清洗干净，分别切成葱段、姜片；</p><br>;' +

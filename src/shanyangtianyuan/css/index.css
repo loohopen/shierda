@@ -56,7 +56,7 @@ img {
 
 .video {
   width: 100%;
-  /* height: 6.28rem; */
+  margin-top: 0.5rem;
   position: relative;
 }
 .play{
@@ -69,11 +69,15 @@ img {
 }
 
 .video-header {
-  width: 100%;
-  height: 0.94rem;
-  background-image: url('../images/video_header.png');
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+    width: 115%;
+    height: 0.94rem;
+    background-image: url(../images/video_header.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    z-index: 11;
+    position: absolute;
+    top: -0.8rem;
+    left: -0.5rem;
 }
 
 .video-play {
@@ -106,9 +110,7 @@ img {
   font-size: 0.6rem;
   border-bottom:0.06rem  solid black;
 }
-.moveline{
-  border: 0;
-}
+
 .title-left {
   width: 0.8rem；
  
@@ -124,18 +126,18 @@ img {
  background-image: url('../images/receiver.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  border: 1px solid green;
+  /* border: 1px solid green; */
 }
 .left-tan{
   width: 0.4rem;
   height: 0.1rem;
   background-color: #EFCBB2;
-  /* border:0.0504rem 0.0504rem 0.0504rem 0rem solid #231815; */
+  margin-top: 0;
   border:2px solid #231815;
 }
-.left-white.setwhite{
+/* .left-white.setwhite{
 margin-top:0;
-}
+} */
 .settan{
   margin-top: 0.1rem;
 }
@@ -143,8 +145,6 @@ margin-top:0;
   width: 0.72rem;
   height: 0.1rem;
   background-color:#FFFFFF;
-  /* margin-top: 25px; */
-  /* border:0.0504rem 0.0504rem 0.0504rem 0rem solid #231815; */
   border:2px solid #231815;
   margin-top: 0.1rem;
 }
@@ -172,7 +172,31 @@ margin-top:0;
   font-weight: normal;
   letter-spacing: 0em;
   font-size: 0.4rem;
-  
+}
+.classic{
+  width: 4.76rem;
+  height: 0.6rem;
+  background-image: url('../images/classic.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.holiday{
+  font-family: REEJI-Q-GB-Regular;
+  font-weight: normal;
+  letter-spacing: 0em;
+  font-size: 0.4rem;
+  width: 3.94rem;
+  height: 0.72rem;
+  background-image: url('../images/holiday.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.stay{
+  width: 3.8rem;
+  height: 0.84rem;
+  background-image: url('../images/stay.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 .failure{
   width: 3.24rem;
@@ -180,13 +204,9 @@ margin-top:0;
   
 }
 .main {
-  /* height: 21.4rem; */
-  /* background-image: url('../images/main.png'); */
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  overflow: hidden;
   margin-top: 0.4rem;
-  /* border: 1px solid cyan; */
   position: relative;
 }
 
@@ -264,7 +284,7 @@ margin-top:0;
   width: 6.5rem;
   margin-top: 0.3rem;
   margin: 0 auto;
-  border: 1px solid green;
+  /* border: 1px solid green; */
   position: relative;
 }
 .cooking-text{
@@ -304,9 +324,7 @@ margin-top:0;
   bottom: 0;
   left: 0.45rem;
 }
-.hotfood{
-  width: 6.26rem; 
-}
+
 .card {
   position: relative;
   margin-top: 0.5rem; 
@@ -351,12 +369,14 @@ border: 2.92px solid #231815;
   width: 6.07rem;
   height: 5.06rem;
   left: 0.12rem;
-  top: 0,1rem;
   top: 0.12rem;
-  background-image: url('../images/cook.png');
+  position: absolute;
+}
+.cooking-img{
+  width: 6.07rem;
+  height: 5.06rem;
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  position: absolute;
 }
 .card-text {
   width: 6.1rem;
@@ -530,25 +550,39 @@ border: 2.92px solid #231815;
 }
 
 .cooking-step{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .7);
+    display: none;
+}
+.cooking-content{
   width: 100%;
+  height: 11rem;
   position: absolute;
   top: 2.36rem;
   left: 0;
+  overflow: scroll;
+  background-color: #F4D8C3;
+  background-image: url('../images/bg.png');
   background-size: 100% auto;
-  display: none;
 }
-
 .cooking-page{ 
   width: 6.9rem;
-  height: 100%;
   margin: 0 auto;
+padding-bottom: 0.05rem;
    display: block;
    background-color: #FFFFFF;
 }
 .cooking-card{
     width: 100%;
     height: 5.6rem;
-    border: 1px solid aquamarine;
 }
 .step{
   margin-top: 0.4rem;
@@ -560,6 +594,14 @@ font-size: 0.48rem;
 font-weight: 500;
 letter-spacing: 0em;
 color: #FA5151;
+}
+.step-list{
+  font-family: SourceHanSansCN-Regular;
+  font-size: 0.32rem;
+  font-weight: normal;
+  letter-spacing: 0em;
+  color: #703A03;
+  margin-top: 0.32rem;
 }
 .step-item{
   font-family: SourceHanSansCN-Regular;
@@ -632,4 +674,8 @@ font-weight: normal;
 letter-spacing: 0em;
 color: #5D5D5D;
 margin-top: 0.1rem;
+}
+
+.show{
+  display: block;
 }
