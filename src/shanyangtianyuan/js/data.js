@@ -25,7 +25,7 @@ window.homeMenu = [
     desc: '上海熏鱼呈酱红色，青鱼的鲜美肉质，密而不硬，肉质酥松、入口甜香，油炸的外焦内嫩，丝丝缕缕中都渗透了鲜和甜的味道，无论喝酒还是饮茶，夹一块慢慢享用，江南山水如映眼前，吟诗作画各得其所。',
     img1: cdnUrl + '/1/shanghaixunyu_1.jpg',
     img2: cdnUrl + '/1/shanghaixunyu.jpg',
-    cookie: '<p></p>;' +
+    cookie: '<p></p>' +
       '<p></p>' +
       '<p></p>' +
       '<p></p>' +
