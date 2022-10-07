@@ -11,7 +11,7 @@ window.onload = function () {
   var afteaCard=box[2].getElementsByClassName("card");
   var cookingStep = document.getElementsByClassName("cooking-step")[0];
   var cookingText=document.getElementsByClassName("cooking-text")[0];
-  var weekDays = ['/shanyangtianyuan/images/day1.png', '/shanyangtianyuan/images/day2.png', '/shanyangtianyuan/images/day3.png', '/shanyangtianyuan/images/day4.png', '/shanyangtianyuan/images/day5.png', '/shanyangtianyuan/images/day6.png', '/shanyangtianyuan/images/day7.png'];
+  var weekDays = ['/haipainongjiacai/images/day1.png', '/haipainongjiacai/images/day2.png', '/haipainongjiacai/images/day3.png', '/haipainongjiacai/images/day4.png', '/haipainongjiacai/images/day5.png', '/haipainongjiacai/images/day6.png', '/haipainongjiacai/images/day7.png'];
   //查找冷菜热菜
   var coldFood = [];
   var hotFood = [];
