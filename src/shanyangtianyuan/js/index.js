@@ -4,20 +4,26 @@ window.onload = function () {
   var boxPage = document.getElementsByClassName("box-page");
   var coldCard = boxPage[0].getElementsByClassName("card");
   var hotCard=boxPage[1].getElementsByClassName("card");
+  var soupCard=boxPage[2].getElementsByClassName("card");
+  var mainFoodCard=boxPage[3].getElementsByClassName("card");
+  var drinkCard=boxPage[4].getElementsByClassName("card");
   var riceCard=box[1].getElementsByClassName("card");
   var afteaCard=box[2].getElementsByClassName("card");
   var cookingStep = document.getElementsByClassName("cooking-step")[0];
-  var content = document.getElementsByClassName("content")[0];
-  var holiday=document.getElementsByClassName("holiday")[0];
   var cookingText=document.getElementsByClassName("cooking-text")[0];
-  var holiday=document.getElementsByClassName("holiday")[0];
   var weekDays = ['/shanyangtianyuan/images/day1.png', '/shanyangtianyuan/images/day2.png', '/shanyangtianyuan/images/day3.png', '/shanyangtianyuan/images/day4.png', '/shanyangtianyuan/images/day5.png', '/shanyangtianyuan/images/day6.png', '/shanyangtianyuan/images/day7.png'];
   //查找冷菜热菜
   var coldFood = [];
   var hotFood = [];
+  var soupFood = [];
+  var mainFood = [];
+  var drinkFood = [];
   for (var a = 0; a < homeMenu.length; a++) {
     homeMenu[a]['category'] == 1 && coldFood.push(homeMenu[a]);
     homeMenu[a]['category'] == 2 && hotFood.push(homeMenu[a]);
+    homeMenu[a]['category'] == 3 && soupFood.push(homeMenu[a]);
+    homeMenu[a]['category'] == 4 && mainFood.push(homeMenu[a]);
+    homeMenu[a]['category'] == 5 && drinkFood.push(homeMenu[a]);
   }
 
   //生成家常菜菜品
@@ -47,8 +53,50 @@ window.onload = function () {
       '</div>' +
       '</div>'
   }
+  var mySoupMenu = '';
+  for (var a = 0; a < soupFood.length; a++) {
+    mySoupMenu += '<div class="card">' +
+      '<div class="card-text">' +
+      '<div class="card-phtoto" style="background-image: url(' + soupFood[a]['img1'] + ')"></div>' +
+      '<div class="card-bottom">' + soupFood[a]['name'] + '</div>' +
+      '</div>' +
+      '<div class="card-bg">' +
+      '<div class="card-tan"></div>' +
+      '<div class="card-white"></div>' +
+      '</div>' +
+      '</div>'
+  }
+  var myMainFoodMenu = '';
+  for (var a = 0; a < mainFood.length; a++) {
+    myMainFoodMenu += '<div class="card">' +
+      '<div class="card-text">' +
+      '<div class="card-phtoto" style="background-image: url(' + mainFood[a]['img1'] + ')"></div>' +
+      '<div class="card-bottom">' + mainFood[a]['name'] + '</div>' +
+      '</div>' +
+      '<div class="card-bg">' +
+      '<div class="card-tan"></div>' +
+      '<div class="card-white"></div>' +
+      '</div>' +
+      '</div>'
+  }
+  var myDrinkMenu = '';
+  for (var a = 0; a < drinkFood.length; a++) {
+    myDrinkMenu += '<div class="card">' +
+      '<div class="card-text">' +
+      '<div class="card-phtoto" style="background-image: url(' + drinkFood[a]['img1'] + ')"></div>' +
+      '<div class="card-bottom">' + drinkFood[a]['name'] + '</div>' +
+      '</div>' +
+      '<div class="card-bg">' +
+      '<div class="card-tan"></div>' +
+      '<div class="card-white"></div>' +
+      '</div>' +
+      '</div>'
+  }
   boxPage[0].innerHTML = mycoldMenu;
   boxPage[1].innerHTML = myhotMenu;
+  boxPage[2].innerHTML = mySoupMenu;
+  boxPage[3].innerHTML = myMainFoodMenu;
+  boxPage[4].innerHTML = myDrinkMenu;
   //生成一天一道下饭菜
   var myriceMenu = '';
   for (var a = 0; a < riceMenu.length; a++) {
@@ -99,7 +147,6 @@ window.onload = function () {
       arr[arrIndex].className = "box active";
       arr1[arrIndex].className = "submenu activebg";
     }
-    holiday.className = 'holiday holiday-' + (arrIndex+1);
   }
   //点击菜单切换菜品
   for (var a = 0; a < submenu.length; a++) {
@@ -119,6 +166,7 @@ window.onload = function () {
       arr[a].onclick = function () {
         console.log(this.index, 'index');
         cookingStep.className = 'cooking-step show';
+        document.body.style.overflow = 'hidden'
         var stepList=document.getElementsByClassName("step-list")[0];
         var cookingimg=document.getElementsByClassName("cooking-img")[0];
         var addressHeader=document.getElementsByClassName("address-header")[0];
@@ -135,6 +183,7 @@ window.onload = function () {
         //关闭做菜步骤
         var close=document.getElementsByClassName("close")[0];
         close.onclick=function(){
+          document.body.style.overflow = 'unset'
           cookingStep.className='cooking-step';
         }
         
@@ -143,9 +192,9 @@ window.onload = function () {
   }
   click(coldCard,coldFood);
   click(hotCard,hotFood);
+  click(soupCard,soupFood);
+  click(mainFoodCard,mainFood);
+  click(drinkCard,drinkFood);
   click(riceCard,riceMenu);
   click(afteaCard,afternoonTea);
- 
-  
-
 }

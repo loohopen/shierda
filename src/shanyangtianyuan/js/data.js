@@ -184,7 +184,7 @@ window.homeMenu = [
   },
   {
     name: '东湖特色猪油拌饭',
-    category: 3, // 主食
+    category: 4, // 主食
     advice: '瀛东度假村',
     desc: '猪油拌饭是以猪油、米饭为主材制作而成的菜品，做法非常便利。酱油和猪油包裹着米饭，色泽亮黄，香味浓郁，不油不腻。',
     img1: cdnUrl + '/1/zhuyoubanpfan_1.jpg',
@@ -196,7 +196,7 @@ window.homeMenu = [
   },
   {
     name: '火龙果奶昔',
-    category: 3, // 3 饮品
+    category: 5, // 3 饮品
     advice: '菊园百果园',
     desc: '火龙果奶昔具有补充营养、缓解便秘等功效和作用，紫色果肉的火龙果口感清甜味道浓郁，是非常健康的饮品。',
     img1: cdnUrl + '/1/huolongguonaixi_1.jpg',
