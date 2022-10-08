@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-  <link rel="stylesheet" href="css/index.css?v=10">
+  <link href="css/video.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/index.css?v=15">
   <script src="../lib/rem.js"></script>
   <title>海派农家菜秘籍</title>
 </head>
@@ -34,7 +35,12 @@
             </div>
           </div>
           <div class="play">
-            <video width="100%" src="http://tv.xingafrica.com/syty/haipainongjiacai.mp4" autoplay controls></video>
+            <video id="my-player" class="video-js" controls webkit-playsinline="true" playsinline="true">
+              <source  src="http://tv.xingafrica.com/syty/haipainongjiacai.mp4" type='video/mp4'>
+            </video>
+            <div class="controler">
+              <div class="start"></div>
+            </div>
           </div>
         </div>
         <!-- 背景框 -->
@@ -225,8 +231,9 @@
     </div>
 
   </div>
-  <script src="./js/data.js?v=10"></script>
-  <script src="./js/index.js?v=10"></script>
+  <script src="./js/video.min.js"></script>
+  <script src="./js/data.js?v=15"></script>
+  <script src="./js/index.js?v=15"></script>
 </body>
 
 </html>

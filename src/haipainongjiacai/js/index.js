@@ -3,14 +3,17 @@ window.onload = function () {
   var box = document.getElementsByClassName("box");
   var boxPage = document.getElementsByClassName("box-page");
   var coldCard = boxPage[0].getElementsByClassName("card");
-  var hotCard=boxPage[1].getElementsByClassName("card");
-  var soupCard=boxPage[2].getElementsByClassName("card");
-  var mainFoodCard=boxPage[3].getElementsByClassName("card");
-  var drinkCard=boxPage[4].getElementsByClassName("card");
-  var riceCard=box[1].getElementsByClassName("card");
-  var afteaCard=box[2].getElementsByClassName("card");
+  var hotCard = boxPage[1].getElementsByClassName("card");
+  var soupCard = boxPage[2].getElementsByClassName("card");
+  var mainFoodCard = boxPage[3].getElementsByClassName("card");
+  var drinkCard = boxPage[4].getElementsByClassName("card");
+  var riceCard = box[1].getElementsByClassName("card");
+  var afteaCard = box[2].getElementsByClassName("card");
   var cookingStep = document.getElementsByClassName("cooking-step")[0];
-  var cookingText=document.getElementsByClassName("cooking-text")[0];
+  var cookingText = document.getElementsByClassName("cooking-text")[0];
+
+  var video = document.getElementsByTagName('video')[0];
+  var videoController = document.getElementsByClassName("controler")[0];
   var weekDays = ['/haipainongjiacai/images/day1.png', '/haipainongjiacai/images/day2.png', '/haipainongjiacai/images/day3.png', '/haipainongjiacai/images/day4.png', '/haipainongjiacai/images/day5.png', '/haipainongjiacai/images/day6.png', '/haipainongjiacai/images/day7.png'];
   //查找冷菜热菜
   var coldFood = [];
@@ -32,7 +35,7 @@ window.onload = function () {
     mycoldMenu += '<div class="card">' +
       '<div class="card-text">' +
       '<div class="card-phtoto" style="background-image: url(' + coldFood[a]['img1'] + ')"></div>' +
-      '<div class="card-bottom">' + coldFood[a]['name'] + '</div>' +
+      '<div class="card-bottom no-text"></div>' +
       '</div>' +
       '<div class="card-bg">' +
       '<div class="card-tan"></div>' +
@@ -45,7 +48,7 @@ window.onload = function () {
     myhotMenu += '<div class="card">' +
       '<div class="card-text">' +
       '<div class="card-phtoto" style="background-image: url(' + hotFood[a]['img1'] + ')"></div>' +
-      '<div class="card-bottom">' + hotFood[a]['name'] + '</div>' +
+      '<div class="card-bottom no-text"></div>' +
       '</div>' +
       '<div class="card-bg">' +
       '<div class="card-tan"></div>' +
@@ -58,7 +61,7 @@ window.onload = function () {
     mySoupMenu += '<div class="card">' +
       '<div class="card-text">' +
       '<div class="card-phtoto" style="background-image: url(' + soupFood[a]['img1'] + ')"></div>' +
-      '<div class="card-bottom">' + soupFood[a]['name'] + '</div>' +
+      '<div class="card-bottom no-text"></div>' +
       '</div>' +
       '<div class="card-bg">' +
       '<div class="card-tan"></div>' +
@@ -71,7 +74,7 @@ window.onload = function () {
     myMainFoodMenu += '<div class="card">' +
       '<div class="card-text">' +
       '<div class="card-phtoto" style="background-image: url(' + mainFood[a]['img1'] + ')"></div>' +
-      '<div class="card-bottom">' + mainFood[a]['name'] + '</div>' +
+      '<div class="card-bottom no-text"></div>' +
       '</div>' +
       '<div class="card-bg">' +
       '<div class="card-tan"></div>' +
@@ -84,7 +87,7 @@ window.onload = function () {
     myDrinkMenu += '<div class="card">' +
       '<div class="card-text">' +
       '<div class="card-phtoto" style="background-image: url(' + drinkFood[a]['img1'] + ')"></div>' +
-      '<div class="card-bottom">' + drinkFood[a]['name'] + '</div>' +
+      '<div class="card-bottom no-text"></div>' +
       '</div>' +
       '<div class="card-bg">' +
       '<div class="card-tan"></div>' +
@@ -104,13 +107,13 @@ window.onload = function () {
       '<div class="card-text">' +
       '<div class="card-header">' +
       '<div class="header-left">' +
-      '<img class="week" src="'+ weekDays[a] +'" />'+
+      '<img class="week" src="' + weekDays[a] + '" />' +
       '<div class="date"></div>' +
       '</div>' +
       ' <div class="header-text">' + riceMenu[a]['name'] + '</div>' +
       '</div>' +
       '<div class="card-phtoto" style="background-image: url(' + riceMenu[a]['img1'] + ')"></div>' +
-      '<div class="card-bottom">' + riceMenu[a]['desc'] + '</div>' +
+      '<div class="card-bottom">' + riceMenu[a]['features'] + '</div>' +
       '</div>' +
       '<div class="card-bg">' +
       '<div class="card-tan"></div>' +
@@ -126,7 +129,7 @@ window.onload = function () {
     myafternoonTea += '<div class="card">' +
       '<div class="card-text">' +
       '<div class="card-phtoto" style="background-image: url(' + afternoonTea[a]['img1'] + ')"></div>' +
-      '<div class="card-bottom">' + afternoonTea[a]['desc'] + '</div>' +
+      '<div class="card-bottom">' + afternoonTea[a]['features'] + '</div>' +
       '</div>' +
       '<div class="card-bg">' +
       '<div class="card-tan"></div>' +
@@ -156,10 +159,10 @@ window.onload = function () {
     }
   }
 
-//获取制作步骤的数据
+  //获取制作步骤的数据
 
   //点击图片显示制作步骤
-  function click (arr,arr1) {
+  function click (arr, arr1) {
     console.log(arr1)
     for (var a = 0; a < arr.length; a++) {
       arr[a].index = a;
@@ -167,34 +170,56 @@ window.onload = function () {
         console.log(this.index, 'index');
         cookingStep.className = 'cooking-step show';
         document.body.style.overflow = 'hidden'
-        var stepList=document.getElementsByClassName("step-list")[0];
-        var cookingimg=document.getElementsByClassName("cooking-img")[0];
-        var addressHeader=document.getElementsByClassName("address-header")[0];
-        var addressFoot=document.getElementsByClassName("address-foot")[0];
-        var cookingStepCen=document.getElementsByClassName("cooking-step-cen")[0];
-        cookingimg.src=arr1[this.index]['img2'];
-        cookingText.innerHTML=arr1[this.index]['desc'];
-        stepList.innerHTML=arr1[this.index]['cookie'];
-        addressHeader.innerHTML=arr1[this.index]['advice'];
-        addressHeader.href = 'https://uri.amap.com/marker?position='+arr1[this.index]['position']+'&name='+arr1[this.index]['advice']+'&coordinate=gaode&callnative=1';
-        addressFoot.innerHTML=arr1[this.index]['address'];
-       cookingStepCen.innerHTML=arr1[this.index]['name']+'制作方法';
+        var stepList = document.getElementsByClassName("step-list")[0];
+        var cookingimg = document.getElementsByClassName("cooking-img")[0];
+        var addressHeader = document.getElementsByClassName("address-header")[0];
+        var addressFoot = document.getElementsByClassName("address-foot")[0];
+        var cookingStepCen = document.getElementsByClassName("cooking-step-cen")[0];
+        cookingimg.src = arr1[this.index]['img2'];
+        cookingText.innerHTML = arr1[this.index]['desc'];
+        stepList.innerHTML = arr1[this.index]['cookie'];
+        addressHeader.innerHTML = arr1[this.index]['advice'];
+        addressHeader.href = 'https://uri.amap.com/marker?position=' + arr1[this.index]['position'] + '&name=' + arr1[this.index]['advice'] + '&coordinate=gaode&callnative=1';
+        addressFoot.innerHTML = arr1[this.index]['address'];
+        cookingStepCen.innerHTML = arr1[this.index]['name'] + '制作方法';
 
         //关闭做菜步骤
-        var close=document.getElementsByClassName("close")[0];
-        close.onclick=function(){
+        var close = document.getElementsByClassName("close")[0];
+        close.onclick = function () {
           document.body.style.overflow = 'unset'
-          cookingStep.className='cooking-step';
+          cookingStep.className = 'cooking-step';
         }
-        
+
       }
     }
   }
-  click(coldCard,coldFood);
-  click(hotCard,hotFood);
-  click(soupCard,soupFood);
-  click(mainFoodCard,mainFood);
-  click(drinkCard,drinkFood);
-  click(riceCard,riceMenu);
-  click(afteaCard,afternoonTea);
+  click(coldCard, coldFood);
+  click(hotCard, hotFood);
+  click(soupCard, soupFood);
+  click(mainFoodCard, mainFood);
+  click(drinkCard, drinkFood);
+  click(riceCard, riceMenu);
+  click(afteaCard, afternoonTea);
+
+
+  var player = videojs('my-player', {
+    width: 628,
+    height:355,
+    bigPlayButton: false,
+    poster: 'http://tv.xingafrica.com/syty/haipainongjiacai.mp4?vframe/jpg/offset/29/w/1200/h/675'
+  }, function onPlayerReady () {
+  });
+
+  player.on('pause', function () {
+    videoController.style.display = 'flex'
+  })
+
+  player.on('play', function () {
+    videoController.style.display = 'none'
+  })
+
+  videoController.onclick = function () {
+    console.log(video)
+    player.play()
+  }
 }

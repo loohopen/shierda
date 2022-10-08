@@ -58,10 +58,29 @@ img {
 
 .play {
   width: 6.28rem;
-  height: 3.65rem;
+  height: 3.55rem;
   margin: 0 auto;
   margin-top: 8px;
   margin-bottom: 10px;
+  position: relative;
+}
+.play .controler{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0,0,0,.4);
+}
+.play .controler .start{
+  width: 1.2rem;
+  height: 1.2rem;
+  background-image: url('../images/play.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 .video-header {
@@ -490,7 +509,7 @@ margin-top:0;
 }
 
 .header-left {
-  width: 2.1rem;
+  /* width: 2.1rem; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -498,7 +517,8 @@ margin-top:0;
 }
 
 .header-text {
-  width: 3.3rem;
+ max-width: 7.3rem;
+  border: 1px solid red;
   font-family: OPPOSans-B;
   font-size: 0.4rem;
   font-weight: bold;
@@ -531,6 +551,10 @@ margin-top:0;
   color: #703A03;
   margin-top: 0.22rem;
   padding-bottom: 0.22rem;
+}
+.card-bottom.no-text{
+  padding: 0.09rem;
+  margin-top: 0;
 }
 
 .cooking-text {
@@ -797,4 +821,22 @@ margin-top:0;
   background-size: 100% 100%;
   background-color: #f3d8c3;
   border-radius: 3px;
+}
+video::-webkit-media-controls-fullscreen-button {
+  display: none;
+}
+video::-webkit-media-controls-timeline {
+  display: none;
+}
+video::--webkit-media-controls-play-button {
+  display: none !important;
+  -webkit-appearance: none !important;
+}
+
+.my-player-dimensions,#my-player_html5_api, #my-player {
+  width: 100%;
+  height: 100%;
+}
+#my-player_html5_api{
+  object-fit: cover;
 }
