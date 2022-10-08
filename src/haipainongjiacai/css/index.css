@@ -64,7 +64,8 @@ img {
   margin-bottom: 10px;
   position: relative;
 }
-.play .controler{
+
+.play .controler {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -73,9 +74,10 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0,0,0,.4);
+  background-color: rgba(0, 0, 0, .4);
 }
-.play .controler .start{
+
+.play .controler .start {
   width: 1.2rem;
   height: 1.2rem;
   background-image: url('../images/play.png');
@@ -517,8 +519,7 @@ margin-top:0;
 }
 
 .header-text {
- max-width: 7.3rem;
-  border: 1px solid red;
+  max-width: 7.3rem;
   font-family: OPPOSans-B;
   font-size: 0.4rem;
   font-weight: bold;
@@ -552,7 +553,8 @@ margin-top:0;
   margin-top: 0.22rem;
   padding-bottom: 0.22rem;
 }
-.card-bottom.no-text{
+
+.card-bottom.no-text {
   padding: 0.09rem;
   margin-top: 0;
 }
@@ -822,21 +824,27 @@ margin-top:0;
   background-color: #f3d8c3;
   border-radius: 3px;
 }
+
 video::-webkit-media-controls-fullscreen-button {
   display: none;
 }
+
 video::-webkit-media-controls-timeline {
   display: none;
 }
+
 video::--webkit-media-controls-play-button {
   display: none !important;
   -webkit-appearance: none !important;
 }
 
-.my-player-dimensions,#my-player_html5_api, #my-player {
+.my-player-dimensions,
+#my-player_html5_api,
+#my-player {
   width: 100%;
   height: 100%;
 }
-#my-player_html5_api{
+
+#my-player_html5_api {
   object-fit: cover;
 }
