@@ -12,6 +12,8 @@ window.onload = function () {
   var cookingStep = document.getElementsByClassName("cooking-step")[0];
   var cookingText = document.getElementsByClassName("cooking-text")[0];
 
+  var dialogMainInfo = document.getElementsByClassName('main-info')[0];
+
   var video = document.getElementsByTagName('video')[0];
   var videoController = document.getElementsByClassName("controler")[0];
   var weekDays = ['/haipainongjiacai/images/day1.png', '/haipainongjiacai/images/day2.png', '/haipainongjiacai/images/day3.png', '/haipainongjiacai/images/day4.png', '/haipainongjiacai/images/day5.png', '/haipainongjiacai/images/day6.png', '/haipainongjiacai/images/day7.png'];
@@ -163,12 +165,11 @@ window.onload = function () {
 
   //点击图片显示制作步骤
   function click (arr, arr1) {
-    console.log(arr1)
     for (var a = 0; a < arr.length; a++) {
       arr[a].index = a;
       arr[a].onclick = function () {
-        console.log(this.index, 'index');
         cookingStep.className = 'cooking-step show';
+        dialogMainInfo.scrollTo(0, 0)
         document.body.style.overflow = 'hidden'
         var stepList = document.getElementsByClassName("step-list")[0];
         var cookingimg = document.getElementsByClassName("cooking-img")[0];
@@ -219,7 +220,6 @@ window.onload = function () {
   })
 
   videoController.onclick = function () {
-    console.log(video)
     player.play()
   }
 }
