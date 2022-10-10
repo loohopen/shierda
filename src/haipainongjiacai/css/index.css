@@ -45,7 +45,7 @@ img {
 .header .header-img {
   height: 100%;
   border-radius: .3rem;
-  background-image: url('../images/header.png');
+  background-image: url('http://tv.xingafrica.com/syty/haipai_bg.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
